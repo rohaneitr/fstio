@@ -7,31 +7,33 @@ use App\Application\Handlers\CheckCompatibilityHandler;
 use Illuminate\Support\Facades\DB;
 use Webkul\Product\Models\ProductProxy;
 
-function setProductAttribute(int $productId, string $attributeCode, mixed $value): void
-{
-    $attribute = DB::table('attributes')->where('code', $attributeCode)->first();
-    if (! $attribute) {
-        $attributeId = DB::table('attributes')->insertGetId([
-            'code' => $attributeCode,
-            'admin_name' => $attributeCode,
-            'type' => 'text',
-            'position' => 1,
-            'is_required' => 0,
-            'is_unique' => 0,
+if (! function_exists('setProductAttribute')) {
+    function setProductAttribute(int $productId, string $attributeCode, mixed $value): void
+    {
+        $attribute = DB::table('attributes')->where('code', $attributeCode)->first();
+        if (! $attribute) {
+            $attributeId = DB::table('attributes')->insertGetId([
+                'code' => $attributeCode,
+                'admin_name' => $attributeCode,
+                'type' => 'text',
+                'position' => 1,
+                'is_required' => 0,
+                'is_unique' => 0,
+            ]);
+        } else {
+            $attributeId = $attribute->id;
+        }
+
+        // Determine EAV storage column type
+        $column = is_numeric($value) ? 'integer_value' : 'text_value';
+
+        DB::table('product_attribute_values')->updateOrInsert([
+            'product_id' => $productId,
+            'attribute_id' => $attributeId,
+        ], [
+            $column => $value,
         ]);
-    } else {
-        $attributeId = $attribute->id;
     }
-
-    // Determine EAV storage column type
-    $column = is_numeric($value) ? 'integer_value' : 'text_value';
-
-    DB::table('product_attribute_values')->updateOrInsert([
-        'product_id' => $productId,
-        'attribute_id' => $attributeId,
-    ], [
-        $column => $value,
-    ]);
 }
 
 test('socket match returns compatible status', function () {

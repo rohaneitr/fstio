@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\BuildController;
 use App\Http\Controllers\Admin\InventoryController;
 use Illuminate\Support\Facades\Route;
 use Webkul\Core\Http\Middleware\NoCacheMiddleware;
@@ -19,4 +20,11 @@ Route::group(['middleware' => ['web', 'admin', NoCacheMiddleware::class], 'prefi
     });
 
     Route::post('catalog/inventories/adjust', [InventoryController::class, 'store'])->name('admin.catalog.inventories.adjust');
+
+    Route::prefix('catalog/builds')->group(function () {
+        Route::post('', [BuildController::class, 'store'])->name('admin.catalog.builds.store');
+        Route::post('clone/{id}', [BuildController::class, 'clone'])->name('admin.catalog.builds.clone');
+        Route::delete('{id}', [BuildController::class, 'destroy'])->name('admin.catalog.builds.delete');
+        Route::post('cart/{id}', [BuildController::class, 'addToCart'])->name('admin.catalog.builds.cart');
+    });
 });

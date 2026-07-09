@@ -14,15 +14,17 @@ use App\Domain\Models\Brand;
 use App\Domain\Models\Product as CustomProduct;
 use App\Domain\Repositories\BrandRepositoryInterface;
 use App\Domain\Repositories\BrandSeriesRepositoryInterface;
+use App\Domain\Repositories\BuildRepositoryInterface;
 use App\Domain\Repositories\CompatibilityRepositoryInterface;
 use App\Domain\Repositories\DistrictRepositoryInterface;
 use App\Domain\Repositories\Eloquent\BrandRepository;
 use App\Domain\Repositories\Eloquent\BrandSeriesRepository;
+use App\Domain\Repositories\Eloquent\BuildRepository;
 use App\Domain\Repositories\Eloquent\CompatibilityRepository;
 use App\Domain\Repositories\Eloquent\DistrictRepository;
+use App\Domain\Repositories\Eloquent\ProductInventoryRepository;
 use App\Domain\Repositories\Eloquent\ProductSerialRepository;
 use App\Domain\Repositories\Eloquent\UpazilaRepository;
-use App\Domain\Repositories\Eloquent\ProductInventoryRepository;
 use App\Domain\Repositories\ProductInventoryRepositoryInterface;
 use App\Domain\Repositories\ProductSerialRepositoryInterface;
 use App\Domain\Repositories\UpazilaRepositoryInterface;
@@ -79,6 +81,7 @@ class FoundationServiceProvider extends ServiceProvider
         $this->app->bind(DistrictRepositoryInterface::class, DistrictRepository::class);
         $this->app->bind(UpazilaRepositoryInterface::class, UpazilaRepository::class);
         $this->app->bind(ProductInventoryRepositoryInterface::class, ProductInventoryRepository::class);
+        $this->app->bind(BuildRepositoryInterface::class, BuildRepository::class);
 
         // Application Authorization
         $this->app->singleton(AuthorizerInterface::class, SimpleAuthorizer::class);
