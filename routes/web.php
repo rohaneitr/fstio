@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\InventoryController;
 use Illuminate\Support\Facades\Route;
 use Webkul\Core\Http\Middleware\NoCacheMiddleware;
 
@@ -16,4 +17,6 @@ Route::group(['middleware' => ['web', 'admin', NoCacheMiddleware::class], 'prefi
         Route::delete('edit/{id}', [BrandController::class, 'destroy'])->name('admin.catalog.brands.delete');
         Route::post('mass-delete', [BrandController::class, 'massDestroy'])->name('admin.catalog.brands.mass_delete');
     });
+
+    Route::post('catalog/inventories/adjust', [InventoryController::class, 'store'])->name('admin.catalog.inventories.adjust');
 });

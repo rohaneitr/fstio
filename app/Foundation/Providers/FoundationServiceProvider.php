@@ -22,6 +22,8 @@ use App\Domain\Repositories\Eloquent\CompatibilityRepository;
 use App\Domain\Repositories\Eloquent\DistrictRepository;
 use App\Domain\Repositories\Eloquent\ProductSerialRepository;
 use App\Domain\Repositories\Eloquent\UpazilaRepository;
+use App\Domain\Repositories\Eloquent\ProductInventoryRepository;
+use App\Domain\Repositories\ProductInventoryRepositoryInterface;
 use App\Domain\Repositories\ProductSerialRepositoryInterface;
 use App\Domain\Repositories\UpazilaRepositoryInterface;
 use App\Foundation\Audit\AuditLogger;
@@ -76,6 +78,7 @@ class FoundationServiceProvider extends ServiceProvider
         $this->app->bind(ProductSerialRepositoryInterface::class, ProductSerialRepository::class);
         $this->app->bind(DistrictRepositoryInterface::class, DistrictRepository::class);
         $this->app->bind(UpazilaRepositoryInterface::class, UpazilaRepository::class);
+        $this->app->bind(ProductInventoryRepositoryInterface::class, ProductInventoryRepository::class);
 
         // Application Authorization
         $this->app->singleton(AuthorizerInterface::class, SimpleAuthorizer::class);
