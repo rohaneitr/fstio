@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-uses(TestCase::class);
-
 use App\Foundation\Address\Address;
 use App\Foundation\Geography\Division;
 use App\Foundation\Geography\GeoResolver;
@@ -11,7 +9,6 @@ use App\Foundation\Money\Money;
 use App\Foundation\Money\MoneyFormatter;
 use App\Foundation\Phone\BangladeshPhone;
 use App\Foundation\Tax\TaxResolverInterface;
-use Tests\TestCase;
 
 test('money module executes precise subunit arithmetic', function () {
     $price1 = Money::BDT(1500.50);

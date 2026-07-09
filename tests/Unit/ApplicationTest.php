@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-uses(TestCase::class);
-
 use App\Application\Authorization\AuthorizerInterface;
 use App\Application\Authorization\SimpleAuthorizer;
 use App\Application\Contracts\CommandBusInterface;
 use App\Application\Contracts\QueryBusInterface;
+use App\Application\DTO\AssignBrandToProductDto;
 use App\Application\DTO\CreateBrandDto;
 use App\Application\DTO\CreateProductSerialDto;
 use App\Application\DTO\RegisterCompatibilityRuleDto;
@@ -20,13 +19,14 @@ use App\Application\Handlers\DeleteBrandHandler;
 use App\Application\Handlers\RegisterCompatibilityRuleHandler;
 use App\Application\Handlers\UpdateBrandHandler;
 use App\Application\Queries\GetBrandBySlugQuery;
+use App\Application\Queries\GetProductWithBrandQuery;
 use App\Domain\Enums\CompatibilityType;
 use App\Domain\Enums\SerialStatus;
 use App\Domain\Repositories\BrandRepositoryInterface;
 use App\Domain\ValueObjects\SerialNumber;
 use App\Domain\ValueObjects\Slug;
 use Illuminate\Support\Facades\DB;
-use Tests\TestCase;
+use Webkul\Product\Models\ProductProxy;
 
 test('create brand handler creates brand successfully', function () {
     DB::beginTransaction();
@@ -201,6 +201,47 @@ test('query bus asks queries to query handlers', function () {
 
     expect($brand)->not->toBeNull();
     expect($brand->slug)->toBe('razer-blade');
+
+    DB::rollBack();
+});
+
+test('command and query bus executes product brand assignment and dynamic relation loading', function () {
+    DB::beginTransaction();
+
+    /** @var SimpleAuthorizer $authorizer */
+    $authorizer = app(AuthorizerInterface::class);
+    $authorizer->setShouldPass(true);
+
+    // 1. Create a brand
+    $brandRepo = app(BrandRepositoryInterface::class);
+    $brand = $brandRepo->create([
+        'slug' => 'msi-gaming',
+        'website_url' => 'https://msi.com',
+    ]);
+
+    // 2. Create a mock product
+    $product = ProductProxy::create([
+        'type' => 'simple',
+        'attribute_family_id' => 1,
+        'sku' => 'MSI-GL65-999',
+    ]);
+
+    // 3. Assign brand using Command Bus
+    $bus = app(CommandBusInterface::class);
+    $dto = new AssignBrandToProductDto($product->id, $brand->id);
+    $response = $bus->dispatch($dto);
+
+    expect($response->isSuccess())->toBeTrue();
+    expect($response->getPayload()['brand_id'])->toBe($brand->id);
+
+    // 4. Query product with Brand eager loaded using Query Bus
+    $queryBus = app(QueryBusInterface::class);
+    $query = new GetProductWithBrandQuery($product->id);
+    $fetchedProduct = $queryBus->ask($query);
+
+    expect($fetchedProduct)->not->toBeNull();
+    expect($fetchedProduct->brand)->not->toBeNull();
+    expect($fetchedProduct->brand->slug)->toBe('msi-gaming');
 
     DB::rollBack();
 });

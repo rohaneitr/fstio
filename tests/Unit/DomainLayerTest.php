@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-uses(TestCase::class);
-
 use App\Domain\Enums\CompatibilityType;
 use App\Domain\Enums\SerialStatus;
 use App\Domain\Enums\WarrantyType;
@@ -33,7 +31,6 @@ use App\Domain\ValueObjects\SerialNumber;
 use App\Domain\ValueObjects\Slug;
 use App\Domain\ValueObjects\Warranty;
 use App\Domain\ValueObjects\Weight;
-use Tests\TestCase;
 
 test('money value object validates calculations and handles exceptions', function () {
     $m1 = Money::BDT(100);

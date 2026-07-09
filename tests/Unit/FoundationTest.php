@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-uses(TestCase::class);
-
 use App\Foundation\Audit\AuditLogger;
 use App\Foundation\Configuration\EnterpriseConfig;
 use App\Foundation\Exceptions\BusinessException;
@@ -11,7 +9,6 @@ use App\Foundation\Helpers\FoundationHelper;
 use App\Foundation\Localization\LocalizationService;
 use App\Foundation\Media\MediaService;
 use App\Foundation\SEO\SEOService;
-use Tests\TestCase;
 
 test('enterprise config retrieves typed values', function () {
     $config = new EnterpriseConfig;

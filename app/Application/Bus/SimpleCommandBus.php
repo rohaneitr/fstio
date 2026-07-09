@@ -19,7 +19,7 @@ final readonly class SimpleCommandBus implements CommandBusInterface
     {
         $commandClass = get_class($command);
         $baseName = class_basename($commandClass);
-        $baseNameWithoutDto = str_ireplace(['dto'], '', $baseName);
+        $baseNameWithoutDto = preg_replace('/dto$/i', '', $baseName);
         $handlerClass = "App\\Application\\Handlers\\{$baseNameWithoutDto}Handler";
 
         if (! class_exists($handlerClass)) {

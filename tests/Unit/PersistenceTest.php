@@ -2,15 +2,12 @@
 
 declare(strict_types=1);
 
-uses(TestCase::class);
-
 use App\Domain\Models\Brand;
 use App\Domain\Models\District;
 use App\Domain\Repositories\BrandRepositoryInterface;
 use App\Domain\Repositories\DistrictRepositoryInterface;
 use App\Domain\Repositories\UpazilaRepositoryInterface;
 use Illuminate\Support\Facades\DB;
-use Tests\TestCase;
 
 test('persistence layer executes crud on brand repository', function () {
     DB::beginTransaction();

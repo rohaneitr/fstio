@@ -36,6 +36,7 @@ uses(PayUTestCase::class)->in('../packages/Webkul/PayU/tests');
 uses(RazorpayTestCase::class)->in('../packages/Webkul/Razorpay/tests');
 uses(ShopTestCase::class)->in('../packages/Webkul/Shop/tests');
 uses(StripeTestCase::class)->in('../packages/Webkul/Stripe/tests');
+uses(Tests\TestCase::class)->in('Unit', 'Feature');
 
 /*
 |--------------------------------------------------------------------------

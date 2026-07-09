@@ -10,6 +10,8 @@ use App\Application\Bus\SimpleCommandBus;
 use App\Application\Bus\SimpleQueryBus;
 use App\Application\Contracts\CommandBusInterface;
 use App\Application\Contracts\QueryBusInterface;
+use App\Domain\Models\Brand;
+use App\Domain\Models\Product as CustomProduct;
 use App\Domain\Repositories\BrandRepositoryInterface;
 use App\Domain\Repositories\BrandSeriesRepositoryInterface;
 use App\Domain\Repositories\CompatibilityRepositoryInterface;
@@ -31,6 +33,8 @@ use App\Foundation\SEO\SEOService;
 use App\Foundation\Tax\DefaultTaxResolver;
 use App\Foundation\Tax\TaxResolverInterface;
 use Illuminate\Support\ServiceProvider;
+use Webkul\Product\Contracts\Product as ProductContract;
+use Webkul\Product\Models\Product;
 
 class FoundationServiceProvider extends ServiceProvider
 {
@@ -81,11 +85,14 @@ class FoundationServiceProvider extends ServiceProvider
         $this->app->singleton(QueryBusInterface::class, SimpleQueryBus::class);
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
-        // Global helper configs or overrides can be wired here
+        // Register Custom Product Model in Concord override
+        concord()->registerModel(ProductContract::class, CustomProduct::class);
+
+        // Dynamically resolve Brand relation on the native Product model
+        Product::resolveRelationUsing('brand', function ($productModel) {
+            return $productModel->belongsTo(Brand::class, 'brand_id');
+        });
     }
 }
