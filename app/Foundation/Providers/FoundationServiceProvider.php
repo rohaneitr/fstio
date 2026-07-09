@@ -6,6 +6,10 @@ namespace App\Foundation\Providers;
 
 use App\Application\Authorization\AuthorizerInterface;
 use App\Application\Authorization\SimpleAuthorizer;
+use App\Application\Bus\SimpleCommandBus;
+use App\Application\Bus\SimpleQueryBus;
+use App\Application\Contracts\CommandBusInterface;
+use App\Application\Contracts\QueryBusInterface;
 use App\Domain\Repositories\BrandRepositoryInterface;
 use App\Domain\Repositories\BrandSeriesRepositoryInterface;
 use App\Domain\Repositories\CompatibilityRepositoryInterface;
@@ -71,6 +75,10 @@ class FoundationServiceProvider extends ServiceProvider
 
         // Application Authorization
         $this->app->singleton(AuthorizerInterface::class, SimpleAuthorizer::class);
+
+        // Application Command & Query Bus
+        $this->app->singleton(CommandBusInterface::class, SimpleCommandBus::class);
+        $this->app->singleton(QueryBusInterface::class, SimpleQueryBus::class);
     }
 
     /**

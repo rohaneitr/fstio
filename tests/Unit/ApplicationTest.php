@@ -6,6 +6,8 @@ uses(TestCase::class);
 
 use App\Application\Authorization\AuthorizerInterface;
 use App\Application\Authorization\SimpleAuthorizer;
+use App\Application\Contracts\CommandBusInterface;
+use App\Application\Contracts\QueryBusInterface;
 use App\Application\DTO\CreateBrandDto;
 use App\Application\DTO\CreateProductSerialDto;
 use App\Application\DTO\RegisterCompatibilityRuleDto;
@@ -17,6 +19,7 @@ use App\Application\Handlers\CreateProductSerialHandler;
 use App\Application\Handlers\DeleteBrandHandler;
 use App\Application\Handlers\RegisterCompatibilityRuleHandler;
 use App\Application\Handlers\UpdateBrandHandler;
+use App\Application\Queries\GetBrandBySlugQuery;
 use App\Domain\Enums\CompatibilityType;
 use App\Domain\Enums\SerialStatus;
 use App\Domain\Repositories\BrandRepositoryInterface;
@@ -157,6 +160,47 @@ test('register compatibility rule handler checks domain specifications', functio
 
     $this->expectException(ValidationException::class);
     $handler->handle($dtoBad);
+
+    DB::rollBack();
+});
+
+test('command bus dispatches commands to handlers', function () {
+    DB::beginTransaction();
+
+    /** @var SimpleAuthorizer $authorizer */
+    $authorizer = app(AuthorizerInterface::class);
+    $authorizer->setShouldPass(true);
+
+    $bus = app(CommandBusInterface::class);
+    $dto = new CreateBrandDto(new Slug('gigabyte-aero'), 'light.jpg', 'dark.jpg', 'https://gigabyte.com');
+
+    $response = $bus->dispatch($dto);
+
+    expect($response->isSuccess())->toBeTrue();
+    expect($response->getPayload()['slug'])->toBe('gigabyte-aero');
+
+    DB::rollBack();
+});
+
+test('query bus asks queries to query handlers', function () {
+    DB::beginTransaction();
+
+    /** @var SimpleAuthorizer $authorizer */
+    $authorizer = app(AuthorizerInterface::class);
+    $authorizer->setShouldPass(true);
+
+    // Create a brand first
+    $createHandler = app(CreateBrandHandler::class);
+    $createDto = new CreateBrandDto(new Slug('razer-blade'));
+    $createHandler->handle($createDto);
+
+    $bus = app(QueryBusInterface::class);
+    $query = new GetBrandBySlugQuery('razer-blade');
+
+    $brand = $bus->ask($query);
+
+    expect($brand)->not->toBeNull();
+    expect($brand->slug)->toBe('razer-blade');
 
     DB::rollBack();
 });
