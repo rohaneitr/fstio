@@ -83,6 +83,10 @@ class FoundationServiceProvider extends ServiceProvider
         // Application Command & Query Bus
         $this->app->singleton(CommandBusInterface::class, SimpleCommandBus::class);
         $this->app->singleton(QueryBusInterface::class, SimpleQueryBus::class);
+
+        // Merge custom administration menu and ACL configurations
+        $this->mergeConfigFrom(base_path('config/menu.php'), 'menu.admin');
+        $this->mergeConfigFrom(base_path('config/acl.php'), 'acl');
     }
 
     public function boot(): void

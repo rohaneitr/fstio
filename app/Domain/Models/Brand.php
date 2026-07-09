@@ -12,10 +12,22 @@ class Brand extends Model
     protected $table = 'brands';
 
     protected $fillable = [
+        'name',
         'slug',
         'logo_light',
         'logo_dark',
         'website_url',
+        'status',
+        'description',
+        'meta_title',
+        'meta_keywords',
+        'meta_description',
+        'sort_order',
+    ];
+
+    protected $casts = [
+        'status' => 'boolean',
+        'sort_order' => 'integer',
     ];
 
     /**

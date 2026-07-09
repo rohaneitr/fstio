@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title' => 'Brands',
+    'add-title' => 'Add Brand',
+    'edit-title' => 'Edit Brand',
+    'general' => 'General Information',
+    'name' => 'Name',
+    'slug' => 'Slug',
+    'website' => 'Website URL',
+    'description' => 'Description',
+    'logos' => 'Logos',
+    'logo-light' => 'Logo (Light Mode)',
+    'logo-dark' => 'Logo (Dark Mode)',
+    'seo' => 'SEO Metadata',
+    'meta-title' => 'Meta Title',
+    'meta-keywords' => 'Meta Keywords',
+    'meta-description' => 'Meta Description',
+    'settings' => 'Settings',
+    'status' => 'Status',
+    'sort-order' => 'Sort Order',
+    'save' => 'Save Brand',
+    'back' => 'Back',
+    'delete-light' => 'Delete light logo',
+    'delete-dark' => 'Delete dark logo',
+];

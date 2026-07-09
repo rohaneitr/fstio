@@ -36,7 +36,7 @@ test('create brand handler creates brand successfully', function () {
     $authorizer->setShouldPass(true);
 
     $handler = app(CreateBrandHandler::class);
-    $dto = new CreateBrandDto(new Slug('acer-nitro'), 'light.jpg', 'dark.jpg', 'https://acer.com');
+    $dto = new CreateBrandDto('Acer Nitro', new Slug('acer-nitro'), null, null, 'https://acer.com');
 
     $response = $handler->handle($dto);
 
@@ -51,7 +51,7 @@ test('create brand handler prevents duplicate slugs and throws ValidationExcepti
     DB::beginTransaction();
 
     $handler = app(CreateBrandHandler::class);
-    $dto = new CreateBrandDto(new Slug('asus-rog'));
+    $dto = new CreateBrandDto('Asus ROG', new Slug('asus-rog'));
 
     // Create first
     $handler->handle($dto);
@@ -69,7 +69,7 @@ test('create brand handler respects authorization checks', function () {
     $authorizer->setShouldPass(false);
 
     $handler = app(CreateBrandHandler::class);
-    $dto = new CreateBrandDto(new Slug('gigabyte-aorus'));
+    $dto = new CreateBrandDto('Gigabyte Aorus', new Slug('gigabyte-aorus'));
 
     $this->expectException(AuthorizationException::class);
     $handler->handle($dto);
@@ -85,11 +85,11 @@ test('update brand handler edits brand fields successfully', function () {
     $createHandler = app(CreateBrandHandler::class);
     $updateHandler = app(UpdateBrandHandler::class);
 
-    $createDto = new CreateBrandDto(new Slug('msi-gaming'));
+    $createDto = new CreateBrandDto('MSI Gaming', new Slug('msi-gaming'));
     $created = $createHandler->handle($createDto);
     $brandId = $created->getPayload()['id'];
 
-    $updateDto = new UpdateBrandDto($brandId, 'new_light.jpg', 'new_dark.jpg', 'https://msi.com');
+    $updateDto = new UpdateBrandDto($brandId, 'MSI Gaming New', new Slug('msi-gaming-new'), null, null, 'https://msi.com');
     $response = $updateHandler->handle($updateDto);
 
     expect($response->isSuccess())->toBeTrue();
@@ -112,11 +112,11 @@ test('delete brand handler removes brand record successfully', function () {
     $createHandler = app(CreateBrandHandler::class);
     $deleteHandler = app(DeleteBrandHandler::class);
 
-    $createDto = new CreateBrandDto(new Slug('hp-omen'));
+    $createDto = new CreateBrandDto('HP Omen', new Slug('hp-omen'));
     $created = $createHandler->handle($createDto);
     $brandId = $created->getPayload()['id'];
 
-    $response = $deleteHandler->handle($brandId);
+    $response = $deleteHandler->handle(new \App\Application\DTO\DeleteBrandDto($brandId));
     expect($response->isSuccess())->toBeTrue();
 
     $repo = app(BrandRepositoryInterface::class);
@@ -172,7 +172,7 @@ test('command bus dispatches commands to handlers', function () {
     $authorizer->setShouldPass(true);
 
     $bus = app(CommandBusInterface::class);
-    $dto = new CreateBrandDto(new Slug('gigabyte-aero'), 'light.jpg', 'dark.jpg', 'https://gigabyte.com');
+    $dto = new CreateBrandDto('Gigabyte Aero', new Slug('gigabyte-aero'), null, null, 'https://gigabyte.com');
 
     $response = $bus->dispatch($dto);
 
@@ -191,7 +191,7 @@ test('query bus asks queries to query handlers', function () {
 
     // Create a brand first
     $createHandler = app(CreateBrandHandler::class);
-    $createDto = new CreateBrandDto(new Slug('razer-blade'));
+    $createDto = new CreateBrandDto('Razer Blade', new Slug('razer-blade'));
     $createHandler->handle($createDto);
 
     $bus = app(QueryBusInterface::class);
@@ -215,6 +215,7 @@ test('command and query bus executes product brand assignment and dynamic relati
     // 1. Create a brand
     $brandRepo = app(BrandRepositoryInterface::class);
     $brand = $brandRepo->create([
+        'name' => 'MSI Gaming',
         'slug' => 'msi-gaming',
         'website_url' => 'https://msi.com',
     ]);
