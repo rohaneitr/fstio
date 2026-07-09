@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\BuildController;
 use App\Http\Controllers\Admin\InventoryController;
+use App\Http\Controllers\Admin\RecommendationController;
 use Illuminate\Support\Facades\Route;
 use Webkul\Core\Http\Middleware\NoCacheMiddleware;
 
@@ -20,6 +21,8 @@ Route::group(['middleware' => ['web', 'admin', NoCacheMiddleware::class], 'prefi
     });
 
     Route::post('catalog/inventories/adjust', [InventoryController::class, 'store'])->name('admin.catalog.inventories.adjust');
+
+    Route::get('catalog/recommendations/{id}', [RecommendationController::class, 'index'])->name('admin.catalog.products.recommendations');
 
     Route::prefix('catalog/builds')->group(function () {
         Route::post('', [BuildController::class, 'store'])->name('admin.catalog.builds.store');
