@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Domain\Services;
 
 use App\Domain\Contracts\CompatibilityRuleInterface;
+use App\Domain\Models\CompatibilityRule;
 use App\Domain\Models\HardwareProfile;
 use App\Domain\Responses\CompatibilityResult;
 use App\Domain\Rules\ARGBHeaderRule;
@@ -32,12 +33,15 @@ use App\Domain\Rules\SocketCompatibilityRule;
 use App\Domain\Rules\StorageInterfaceRule;
 use App\Domain\Rules\USBHeaderRule;
 use App\Domain\Rules\XMPExpoRule;
+use App\Domain\Specifications\CompatibilitySpecification;
 
 class CompatibilityEngine
 {
-    public function __construct()
+    private ?CompatibilitySpecification $specification = null;
+
+    public function __construct(?CompatibilitySpecification $specification = null)
     {
-        require_once dirname(__DIR__).'/Rules/OtherHardwareRules.php';
+        $this->specification = $specification;
     }
 
     /**
@@ -95,5 +99,15 @@ class CompatibilityEngine
         }
 
         return $results;
+    }
+
+    /**
+     * Check if a compatibility rule's invariants are satisfied.
+     */
+    public function checkCompatible(CompatibilityRule $rule): bool
+    {
+        $spec = $this->specification ?? new CompatibilitySpecification;
+
+        return $spec->isSatisfiedBy($rule);
     }
 }

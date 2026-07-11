@@ -4,17 +4,33 @@ declare(strict_types=1);
 
 namespace App\Domain\Services;
 
+use App\Application\DTO\CalculatePriceDto;
+use App\Domain\Contracts\ProductPricingPortInterface;
 use App\Domain\ValueObjects\Money;
 
-final class PriceCalculator
+final readonly class PriceCalculator
 {
-    /**
-     * Calculate total price including VAT.
-     */
-    public function calculateTotal(Money $subtotal, float $vatRate = 0.05): Money
-    {
-        $vat = $subtotal->multiply($vatRate);
+    public function __construct(
+        private ProductPricingPortInterface $pricingPort
+    ) {}
 
-        return $subtotal->add($vat);
+    /**
+     * Calculate final price for a product considering quantity, customer group, and inventory.
+     */
+    public function calculate(CalculatePriceDto $dto): Money
+    {
+        $productId = $dto->productId;
+        $qty = $dto->quantity;
+
+        $price = $this->pricingPort->resolvePrice(
+            $productId,
+            $qty,
+            $dto->channelId,
+            $dto->customerGroupId
+        );
+
+        $money = Money::BDT($price);
+
+        return $money;
     }
 }

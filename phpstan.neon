@@ -1,0 +1,11 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - phpstan-baseline.neon
+
+parameters:
+    level: 9
+    reportUnmatchedIgnoredErrors: false
+    paths:
+        - app/Domain
+        - app/Application/DTO
+        - app/Infrastructure/Persistence/Eloquent

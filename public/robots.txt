@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /customer/
+Disallow: /search/
+Disallow: /api/
+Disallow: /*?*currency=
+Disallow: /*?*locale=
+Disallow: /*?*sort=
+Disallow: /*?*limit=
+
+# Allow SEO Friendly Sitemap
+Sitemap: http://localhost:8000/sitemap.xml

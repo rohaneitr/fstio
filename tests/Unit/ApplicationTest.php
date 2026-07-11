@@ -9,6 +9,7 @@ use App\Application\Contracts\QueryBusInterface;
 use App\Application\DTO\AssignBrandToProductDto;
 use App\Application\DTO\CreateBrandDto;
 use App\Application\DTO\CreateProductSerialDto;
+use App\Application\DTO\DeleteBrandDto;
 use App\Application\DTO\RegisterCompatibilityRuleDto;
 use App\Application\DTO\UpdateBrandDto;
 use App\Application\Exceptions\AuthorizationException;
@@ -116,7 +117,7 @@ test('delete brand handler removes brand record successfully', function () {
     $created = $createHandler->handle($createDto);
     $brandId = $created->getPayload()['id'];
 
-    $response = $deleteHandler->handle(new \App\Application\DTO\DeleteBrandDto($brandId));
+    $response = $deleteHandler->handle(new DeleteBrandDto($brandId));
     expect($response->isSuccess())->toBeTrue();
 
     $repo = app(BrandRepositoryInterface::class);

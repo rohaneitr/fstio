@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac">
+  <file src="app/Application/DTO/AddBuildToCartDto.php">
+    <UnusedClass>
+      <code><![CDATA[AddBuildToCartDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Application/DTO/AdjustInventoryQtyDto.php">
+    <UnusedClass>
+      <code><![CDATA[AdjustInventoryQtyDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Application/DTO/AllocateInventoryDto.php">
+    <UnusedClass>
+      <code><![CDATA[AllocateInventoryDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Application/DTO/AssignBrandToProductDto.php">
+    <UnusedClass>
+      <code><![CDATA[AssignBrandToProductDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Application/DTO/CalculatePriceDto.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Application/DTO/CheckCompatibilityDto.php">
+    <UnusedClass>
+      <code><![CDATA[CheckCompatibilityDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Application/DTO/CloneBuildDto.php">
+    <UnusedClass>
+      <code><![CDATA[CloneBuildDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Application/DTO/CreateBrandDto.php">
+    <UnusedClass>
+      <code><![CDATA[CreateBrandDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Application/DTO/CreateProductSerialDto.php">
+    <UnusedClass>
+      <code><![CDATA[CreateProductSerialDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Application/DTO/DeleteBrandDto.php">
+    <UnusedClass>
+      <code><![CDATA[DeleteBrandDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Application/DTO/DeleteBuildDto.php">
+    <UnusedClass>
+      <code><![CDATA[DeleteBuildDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Application/DTO/GetRecommendationsDto.php">
+    <UnusedClass>
+      <code><![CDATA[GetRecommendationsDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Application/DTO/RegisterCompatibilityRuleDto.php">
+    <UnusedClass>
+      <code><![CDATA[RegisterCompatibilityRuleDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Application/DTO/SaveBuildDto.php">
+    <UnusedClass>
+      <code><![CDATA[SaveBuildDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Application/DTO/UpdateBrandDto.php">
+    <UnusedClass>
+      <code><![CDATA[UpdateBrandDto]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Enums/BrandStatus.php">
+    <UnusedClass>
+      <code><![CDATA[BrandStatus]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Enums/ProductLifecycle.php">
+    <UnusedClass>
+      <code><![CDATA[ProductLifecycle]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Enums/StockStatus.php">
+    <UnusedClass>
+      <code><![CDATA[StockStatus]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Events/BrandAssignedToProduct.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[BrandAssignedToProduct]]></code>
+    </ClassMustBeFinal>
+    <UnusedClass>
+      <code><![CDATA[BrandAssignedToProduct]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Events/BrandCreated.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[BrandCreated]]></code>
+    </ClassMustBeFinal>
+    <UnusedClass>
+      <code><![CDATA[BrandCreated]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Events/BrandDeleted.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[BrandDeleted]]></code>
+    </ClassMustBeFinal>
+    <UnusedClass>
+      <code><![CDATA[BrandDeleted]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Events/BrandUpdated.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[BrandUpdated]]></code>
+    </ClassMustBeFinal>
+    <UnusedClass>
+      <code><![CDATA[BrandUpdated]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Events/InventoryAdjusted.php">
+    <PossiblyUnusedProperty>
+      <code><![CDATA[$inventorySourceId]]></code>
+      <code><![CDATA[$newQty]]></code>
+      <code><![CDATA[$previousQty]]></code>
+      <code><![CDATA[$productId]]></code>
+      <code><![CDATA[$qtyChange]]></code>
+      <code><![CDATA[$userId]]></code>
+    </PossiblyUnusedProperty>
+  </file>
+  <file src="app/Domain/Events/InventoryReserved.php">
+    <PossiblyUnusedProperty>
+      <code><![CDATA[$channelId]]></code>
+      <code><![CDATA[$productId]]></code>
+      <code><![CDATA[$reservedQty]]></code>
+    </PossiblyUnusedProperty>
+  </file>
+  <file src="app/Domain/Exceptions/InvalidBrandException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[InvalidBrandException]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="app/Domain/Exceptions/InvalidCompatibilityException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[InvalidCompatibilityException]]></code>
+    </ClassMustBeFinal>
+    <UnusedClass>
+      <code><![CDATA[InvalidCompatibilityException]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Exceptions/InvalidMoneyException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[InvalidMoneyException]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="app/Domain/Exceptions/InvalidPhoneException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[InvalidPhoneException]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="app/Domain/Exceptions/InvalidSerialException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[InvalidSerialException]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="app/Domain/Exceptions/InvalidWarrantyException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[InvalidWarrantyException]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="app/Domain/Factories/BrandFactory.php">
+    <UnusedClass>
+      <code><![CDATA[BrandFactory]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Factories/CompatibilityFactory.php">
+    <UnusedClass>
+      <code><![CDATA[CompatibilityFactory]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Factories/ProductSerialFactory.php">
+    <UnusedClass>
+      <code><![CDATA[ProductSerialFactory]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Models/Brand.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[Brand]]></code>
+    </ClassMustBeFinal>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->hasMany(BrandSeries::class, 'brand_id')]]></code>
+    </MixedReturnStatement>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[series]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Models/BrandSeries.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[BrandSeries]]></code>
+    </ClassMustBeFinal>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->belongsTo(Brand::class, 'brand_id')]]></code>
+    </MixedReturnStatement>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[brand]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Models/Build.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[Build]]></code>
+    </ClassMustBeFinal>
+    <InvalidOperand>
+      <code><![CDATA[($completed / count($requiredTypes)) * 100]]></code>
+    </InvalidOperand>
+    <MissingClosureParamType>
+      <code><![CDATA[$type]]></code>
+    </MissingClosureParamType>
+    <MissingClosureReturnType>
+      <code><![CDATA[fn ($type) => $type->value]]></code>
+    </MissingClosureReturnType>
+    <MixedArgument>
+      <code><![CDATA[$installedTypes]]></code>
+    </MixedArgument>
+    <MixedAssignment>
+      <code><![CDATA[$installedTypes]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[map]]></code>
+      <code><![CDATA[pluck]]></code>
+      <code><![CDATA[toArray]]></code>
+    </MixedMethodCall>
+    <MixedPropertyFetch>
+      <code><![CDATA[$type->value]]></code>
+    </MixedPropertyFetch>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->hasMany(BuildItem::class, 'build_id')]]></code>
+    </MixedReturnStatement>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getCompletionPercentage]]></code>
+      <code><![CDATA[items]]></code>
+    </PossiblyUnusedMethod>
+    <UndefinedThisPropertyFetch>
+      <code><![CDATA[$this->items]]></code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="app/Domain/Models/BuildItem.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[ProductProxy::modelClass()]]></code>
+    </ArgumentTypeCoercion>
+    <ClassMustBeFinal>
+      <code><![CDATA[BuildItem]]></code>
+    </ClassMustBeFinal>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->belongsTo(Build::class, 'build_id')]]></code>
+      <code><![CDATA[$this->belongsTo(ProductProxy::modelClass(), 'product_id')]]></code>
+    </MixedReturnStatement>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[build]]></code>
+      <code><![CDATA[product]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Models/CompatibilityRule.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[CompatibilityRule]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="app/Domain/Models/District.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[District]]></code>
+    </ClassMustBeFinal>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->hasMany(Upazila::class, 'district_id')]]></code>
+    </MixedReturnStatement>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[upazilas]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Models/HardwareProfile.php">
+    <MissingParamType>
+      <code><![CDATA[$product]]></code>
+    </MissingParamType>
+    <MixedArgument>
+      <code><![CDATA[$product->id]]></code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$attributes]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayOffset>
+      <code><![CDATA[$attributes[$code]]]></code>
+    </MixedArrayOffset>
+    <MixedAssignment>
+      <code><![CDATA[$attributes[$code]]]></code>
+      <code><![CDATA[$attributes['id']]]></code>
+      <code><![CDATA[$attributes['sku']]]></code>
+      <code><![CDATA[$attributes['type']]]></code>
+      <code><![CDATA[$code]]></code>
+      <code><![CDATA[$val]]></code>
+    </MixedAssignment>
+    <MixedPropertyFetch>
+      <code><![CDATA[$product->attribute_values]]></code>
+      <code><![CDATA[$product->id]]></code>
+      <code><![CDATA[$product->sku]]></code>
+      <code><![CDATA[$product->type]]></code>
+      <code><![CDATA[$val->attribute]]></code>
+      <code><![CDATA[$val->attribute?->code]]></code>
+      <code><![CDATA[$val->boolean_value]]></code>
+      <code><![CDATA[$val->date_value]]></code>
+      <code><![CDATA[$val->datetime_value]]></code>
+      <code><![CDATA[$val->float_value]]></code>
+      <code><![CDATA[$val->integer_value]]></code>
+      <code><![CDATA[$val->json_value]]></code>
+      <code><![CDATA[$val->text_value]]></code>
+    </MixedPropertyFetch>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getProductId]]></code>
+      <code><![CDATA[toArray]]></code>
+    </PossiblyUnusedMethod>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$code]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="app/Domain/Models/Product.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[Product]]></code>
+    </ClassMustBeFinal>
+    <MissingParamType>
+      <code><![CDATA[$value]]></code>
+    </MissingParamType>
+    <MissingReturnType>
+      <code><![CDATA[getPriceAttribute]]></code>
+      <code><![CDATA[getPriceIndicesAttribute]]></code>
+    </MissingReturnType>
+    <MixedAssignment>
+      <code><![CDATA[$flat]]></code>
+      <code><![CDATA[$index]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[first]]></code>
+      <code><![CDATA[first]]></code>
+    </MixedMethodCall>
+    <MixedPropertyFetch>
+      <code><![CDATA[$flat?->price]]></code>
+      <code><![CDATA[$index->min_price]]></code>
+    </MixedPropertyFetch>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->belongsTo(Brand::class, 'brand_id')]]></code>
+    </MixedReturnStatement>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[Product]]></code>
+    </PropertyNotSetInConstructor>
+    <UndefinedMagicMethod>
+      <code><![CDATA[ProductFlat::where('product_id', $this->id)]]></code>
+    </UndefinedMagicMethod>
+    <UndefinedThisPropertyFetch>
+      <code><![CDATA[$this->id]]></code>
+      <code><![CDATA[$this->price_indices]]></code>
+    </UndefinedThisPropertyFetch>
+    <UnusedClass>
+      <code><![CDATA[Product]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Models/ProductSerial.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ProductSerial]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="app/Domain/Models/Upazila.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[Upazila]]></code>
+    </ClassMustBeFinal>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->belongsTo(District::class, 'district_id')]]></code>
+    </MixedReturnStatement>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[district]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Repositories/BrandRepositoryInterface.php">
+    <MissingReturnType>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+      <code><![CDATA[findBySlug]]></code>
+      <code><![CDATA[update]]></code>
+    </MissingReturnType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+      <code><![CDATA[findBySlug]]></code>
+      <code><![CDATA[update]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Repositories/BrandSeriesRepositoryInterface.php">
+    <MissingReturnType>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+      <code><![CDATA[update]]></code>
+    </MissingReturnType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+      <code><![CDATA[update]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Repositories/BuildRepositoryInterface.php">
+    <MissingReturnType>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+      <code><![CDATA[findByUuid]]></code>
+      <code><![CDATA[update]]></code>
+    </MissingReturnType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+      <code><![CDATA[findByUuid]]></code>
+      <code><![CDATA[update]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Repositories/CompatibilityRepositoryInterface.php">
+    <MissingReturnType>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+    </MissingReturnType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Repositories/DistrictRepositoryInterface.php">
+    <MissingReturnType>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+    </MissingReturnType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Repositories/Eloquent/BrandRepository.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[BrandRepository]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function findBySlug(string $slug)]]></code>
+      <code><![CDATA[public function model(): string]]></code>
+    </MissingOverrideAttribute>
+    <MissingReturnType>
+      <code><![CDATA[findBySlug]]></code>
+    </MissingReturnType>
+    <MixedMethodCall>
+      <code><![CDATA[first]]></code>
+    </MixedMethodCall>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[BrandRepository]]></code>
+      <code><![CDATA[BrandRepository]]></code>
+      <code><![CDATA[BrandRepository]]></code>
+      <code><![CDATA[BrandRepository]]></code>
+      <code><![CDATA[BrandRepository]]></code>
+    </PropertyNotSetInConstructor>
+    <UndefinedMagicMethod>
+      <code><![CDATA[where]]></code>
+    </UndefinedMagicMethod>
+    <UnusedClass>
+      <code><![CDATA[BrandRepository]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Repositories/Eloquent/BrandSeriesRepository.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[BrandSeriesRepository]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function model(): string]]></code>
+    </MissingOverrideAttribute>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[BrandSeriesRepository]]></code>
+      <code><![CDATA[BrandSeriesRepository]]></code>
+      <code><![CDATA[BrandSeriesRepository]]></code>
+      <code><![CDATA[BrandSeriesRepository]]></code>
+      <code><![CDATA[BrandSeriesRepository]]></code>
+    </PropertyNotSetInConstructor>
+    <UnusedClass>
+      <code><![CDATA[BrandSeriesRepository]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Repositories/Eloquent/BuildRepository.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[BuildRepository]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function findByUuid(string $uuid)]]></code>
+      <code><![CDATA[public function model(): string]]></code>
+    </MissingOverrideAttribute>
+    <MissingReturnType>
+      <code><![CDATA[findByUuid]]></code>
+    </MissingReturnType>
+    <MixedMethodCall>
+      <code><![CDATA[first]]></code>
+    </MixedMethodCall>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[BuildRepository]]></code>
+      <code><![CDATA[BuildRepository]]></code>
+      <code><![CDATA[BuildRepository]]></code>
+      <code><![CDATA[BuildRepository]]></code>
+      <code><![CDATA[BuildRepository]]></code>
+    </PropertyNotSetInConstructor>
+    <UndefinedMagicMethod>
+      <code><![CDATA[where]]></code>
+    </UndefinedMagicMethod>
+    <UnusedClass>
+      <code><![CDATA[BuildRepository]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Repositories/Eloquent/CompatibilityRepository.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[CompatibilityRepository]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function model(): string]]></code>
+    </MissingOverrideAttribute>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[CompatibilityRepository]]></code>
+      <code><![CDATA[CompatibilityRepository]]></code>
+      <code><![CDATA[CompatibilityRepository]]></code>
+      <code><![CDATA[CompatibilityRepository]]></code>
+      <code><![CDATA[CompatibilityRepository]]></code>
+    </PropertyNotSetInConstructor>
+    <UnusedClass>
+      <code><![CDATA[CompatibilityRepository]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Repositories/Eloquent/DistrictRepository.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[DistrictRepository]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function model(): string]]></code>
+    </MissingOverrideAttribute>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[DistrictRepository]]></code>
+      <code><![CDATA[DistrictRepository]]></code>
+      <code><![CDATA[DistrictRepository]]></code>
+      <code><![CDATA[DistrictRepository]]></code>
+      <code><![CDATA[DistrictRepository]]></code>
+    </PropertyNotSetInConstructor>
+    <UnusedClass>
+      <code><![CDATA[DistrictRepository]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Repositories/Eloquent/ProductInventoryRepository.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ProductInventoryRepository]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function adjustQuantity(int $productId, int $inventorySourceId, int $qtyChange, ?int $userId = null): void]]></code>
+      <code><![CDATA[public function findForProductAndSource(int $productId, int $inventorySourceId)]]></code>
+      <code><![CDATA[public function reserveQuantity(int $productId, int $channelId, int $reservedQty): void]]></code>
+    </MissingOverrideAttribute>
+    <MissingReturnType>
+      <code><![CDATA[findForProductAndSource]]></code>
+    </MissingReturnType>
+    <MixedAssignment>
+      <code><![CDATA[$ordered]]></code>
+      <code><![CDATA[$record]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[first]]></code>
+      <code><![CDATA[first]]></code>
+      <code><![CDATA[first]]></code>
+      <code><![CDATA[lockForUpdate]]></code>
+      <code><![CDATA[lockForUpdate]]></code>
+      <code><![CDATA[save]]></code>
+      <code><![CDATA[save]]></code>
+    </MixedMethodCall>
+    <MixedOperand>
+      <code><![CDATA[$ordered->qty]]></code>
+    </MixedOperand>
+    <MixedPropertyAssignment>
+      <code><![CDATA[$ordered]]></code>
+      <code><![CDATA[$record]]></code>
+    </MixedPropertyAssignment>
+    <MixedPropertyFetch>
+      <code><![CDATA[$ordered->qty]]></code>
+      <code><![CDATA[$record->qty]]></code>
+    </MixedPropertyFetch>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[ProductInventoryRepository]]></code>
+      <code><![CDATA[ProductInventoryRepository]]></code>
+      <code><![CDATA[ProductInventoryRepository]]></code>
+      <code><![CDATA[ProductInventoryRepository]]></code>
+      <code><![CDATA[ProductInventoryRepository]]></code>
+    </PropertyNotSetInConstructor>
+    <UndefinedMagicMethod>
+      <code><![CDATA[ProductOrderedInventory::create([
+                'product_id' => $productId,
+                'channel_id' => $channelId,
+                'qty' => $reservedQty,
+            ])]]></code>
+      <code><![CDATA[ProductOrderedInventory::where([
+            'product_id' => $productId,
+            'channel_id' => $channelId,
+        ])]]></code>
+      <code><![CDATA[where]]></code>
+      <code><![CDATA[where]]></code>
+    </UndefinedMagicMethod>
+    <UnusedClass>
+      <code><![CDATA[ProductInventoryRepository]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Repositories/Eloquent/ProductSerialRepository.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ProductSerialRepository]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function model(): string]]></code>
+    </MissingOverrideAttribute>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[ProductSerialRepository]]></code>
+      <code><![CDATA[ProductSerialRepository]]></code>
+      <code><![CDATA[ProductSerialRepository]]></code>
+      <code><![CDATA[ProductSerialRepository]]></code>
+      <code><![CDATA[ProductSerialRepository]]></code>
+    </PropertyNotSetInConstructor>
+    <UnusedClass>
+      <code><![CDATA[ProductSerialRepository]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Repositories/Eloquent/UpazilaRepository.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[UpazilaRepository]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function model(): string]]></code>
+    </MissingOverrideAttribute>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[UpazilaRepository]]></code>
+      <code><![CDATA[UpazilaRepository]]></code>
+      <code><![CDATA[UpazilaRepository]]></code>
+      <code><![CDATA[UpazilaRepository]]></code>
+      <code><![CDATA[UpazilaRepository]]></code>
+    </PropertyNotSetInConstructor>
+    <UnusedClass>
+      <code><![CDATA[UpazilaRepository]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Repositories/ProductInventoryRepositoryInterface.php">
+    <MissingReturnType>
+      <code><![CDATA[findForProductAndSource]]></code>
+    </MissingReturnType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[adjustQuantity]]></code>
+      <code><![CDATA[findForProductAndSource]]></code>
+      <code><![CDATA[reserveQuantity]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Repositories/ProductSerialRepositoryInterface.php">
+    <MissingReturnType>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+      <code><![CDATA[update]]></code>
+    </MissingReturnType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+      <code><![CDATA[update]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Repositories/UpazilaRepositoryInterface.php">
+    <MissingReturnType>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+    </MissingReturnType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[find]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Responses/CompatibilityResult.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getCode]]></code>
+      <code><![CDATA[getCustomerMessage]]></code>
+      <code><![CDATA[getMessage]]></code>
+      <code><![CDATA[getRecommendedFix]]></code>
+      <code><![CDATA[getSeverity]]></code>
+      <code><![CDATA[getTechnicalReason]]></code>
+      <code><![CDATA[isCritical]]></code>
+      <code><![CDATA[toArray]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/Rules/CoolerHeightRule.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+    </MissingOverrideAttribute>
+    <MixedAssignment>
+      <code><![CDATA[$caseClearance]]></code>
+      <code><![CDATA[$coolerHeight]]></code>
+    </MixedAssignment>
+  </file>
+  <file src="app/Domain/Rules/GPULengthRule.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+    </MissingOverrideAttribute>
+    <MixedAssignment>
+      <code><![CDATA[$caseClearance]]></code>
+      <code><![CDATA[$gpuLength]]></code>
+    </MixedAssignment>
+  </file>
+  <file src="app/Domain/Rules/MemoryGenerationRule.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+    </MissingOverrideAttribute>
+    <MixedAssignment>
+      <code><![CDATA[$mbGen]]></code>
+      <code><![CDATA[$ramGen]]></code>
+    </MixedAssignment>
+  </file>
+  <file src="app/Domain/Rules/OtherHardwareRules.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+    </MissingOverrideAttribute>
+    <MixedAssignment>
+      <code><![CDATA[$caseAudio]]></code>
+      <code><![CDATA[$casePsuClearance]]></code>
+      <code><![CDATA[$caseRequiresTypec]]></code>
+      <code><![CDATA[$caseRequiresUsb3]]></code>
+      <code><![CDATA[$caseSlots]]></code>
+      <code><![CDATA[$caseSupportedForms]]></code>
+      <code><![CDATA[$cpuEcc]]></code>
+      <code><![CDATA[$fanCount]]></code>
+      <code><![CDATA[$gpuConnectors]]></code>
+      <code><![CDATA[$gpuGen]]></code>
+      <code><![CDATA[$gpuRequires12vhpwr]]></code>
+      <code><![CDATA[$gpuSlots]]></code>
+      <code><![CDATA[$lanes]]></code>
+      <code><![CDATA[$mbArgb]]></code>
+      <code><![CDATA[$mbAudio]]></code>
+      <code><![CDATA[$mbBios]]></code>
+      <code><![CDATA[$mbChipset]]></code>
+      <code><![CDATA[$mbEcc]]></code>
+      <code><![CDATA[$mbFans]]></code>
+      <code><![CDATA[$mbForm]]></code>
+      <code><![CDATA[$mbGen]]></code>
+      <code><![CDATA[$mbLanes]]></code>
+      <code><![CDATA[$mbM2Gen]]></code>
+      <code><![CDATA[$mbM2Slots]]></code>
+      <code><![CDATA[$mbMaxCapacity]]></code>
+      <code><![CDATA[$mbMaxSpeed]]></code>
+      <code><![CDATA[$mbRgb]]></code>
+      <code><![CDATA[$mbSataPorts]]></code>
+      <code><![CDATA[$mbSlots]]></code>
+      <code><![CDATA[$mbTypec]]></code>
+      <code><![CDATA[$mbUsb3]]></code>
+      <code><![CDATA[$psuConnectors]]></code>
+      <code><![CDATA[$psuHas12vhpwr]]></code>
+      <code><![CDATA[$psuLength]]></code>
+      <code><![CDATA[$ramCapacity]]></code>
+      <code><![CDATA[$ramIsEcc]]></code>
+      <code><![CDATA[$ramModules]]></code>
+      <code><![CDATA[$ramProfile]]></code>
+      <code><![CDATA[$ramSpeed]]></code>
+      <code><![CDATA[$requiredBios]]></code>
+      <code><![CDATA[$rgbType]]></code>
+      <code><![CDATA[$sharesLanes]]></code>
+      <code><![CDATA[$storageGen]]></code>
+      <code><![CDATA[$storageInterface]]></code>
+      <code><![CDATA[$storageInterface]]></code>
+      <code><![CDATA[$storageInterface]]></code>
+      <code><![CDATA[$supportedChipsets]]></code>
+      <code><![CDATA[$supportedProfiles]]></code>
+    </MixedAssignment>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[! $cpuEcc]]></code>
+      <code><![CDATA[! $mbEcc]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="app/Domain/Rules/PSUHeadroomRule.php">
+    <InvalidOperand>
+      <code><![CDATA[$cpuPower + $gpuPower]]></code>
+    </InvalidOperand>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="app/Domain/Rules/SocketCompatibilityRule.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function evaluate(array $profiles): CompatibilityResult]]></code>
+    </MissingOverrideAttribute>
+    <MixedAssignment>
+      <code><![CDATA[$cpuSocket]]></code>
+      <code><![CDATA[$mbSocket]]></code>
+    </MixedAssignment>
+  </file>
+  <file src="app/Domain/Services/CompatibilityEngine.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[CompatibilityEngine]]></code>
+    </ClassMustBeFinal>
+    <UnnecessaryVarAnnotation>
+      <code><![CDATA[CompatibilityRuleInterface]]></code>
+    </UnnecessaryVarAnnotation>
+    <UnusedClass>
+      <code><![CDATA[CompatibilityEngine]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Services/HybridRecommendationPipeline.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[HybridRecommendationPipeline]]></code>
+    </ClassMustBeFinal>
+    <MissingParamType>
+      <code><![CDATA[$targetProduct]]></code>
+    </MissingParamType>
+    <MixedArrayAccess>
+      <code><![CDATA[$a['distance']]]></code>
+      <code><![CDATA[$a['scores']]]></code>
+      <code><![CDATA[$a['scores']]]></code>
+      <code><![CDATA[$a['scores']]]></code>
+      <code><![CDATA[$a['scores']['gaming']]]></code>
+      <code><![CDATA[$a['scores']['productivity']]]></code>
+      <code><![CDATA[$a['scores']['value']]]></code>
+      <code><![CDATA[$b['distance']]]></code>
+      <code><![CDATA[$b['scores']]]></code>
+      <code><![CDATA[$b['scores']]]></code>
+      <code><![CDATA[$b['scores']]]></code>
+      <code><![CDATA[$b['scores']['gaming']]]></code>
+      <code><![CDATA[$b['scores']['productivity']]]></code>
+      <code><![CDATA[$b['scores']['value']]]></code>
+    </MixedArrayAccess>
+    <MixedAssignment>
+      <code><![CDATA[$candidate]]></code>
+      <code><![CDATA[$scoreA]]></code>
+      <code><![CDATA[$scoreB]]></code>
+    </MixedAssignment>
+    <MixedPropertyFetch>
+      <code><![CDATA[$candidate->id]]></code>
+      <code><![CDATA[$candidate->price]]></code>
+      <code><![CDATA[$targetProduct->id]]></code>
+      <code><![CDATA[$targetProduct->price]]></code>
+    </MixedPropertyFetch>
+    <RedundantFunctionCall>
+      <code><![CDATA[array_values]]></code>
+      <code><![CDATA[array_values]]></code>
+      <code><![CDATA[array_values]]></code>
+    </RedundantFunctionCall>
+    <UnusedClass>
+      <code><![CDATA[HybridRecommendationPipeline]]></code>
+    </UnusedClass>
+    <UnusedVariable>
+      <code><![CDATA[$targetScores]]></code>
+    </UnusedVariable>
+  </file>
+  <file src="app/Domain/Services/PriceCalculator.php">
+    <MixedAssignment>
+      <code><![CDATA[$channel]]></code>
+      <code><![CDATA[$customerGroup]]></code>
+      <code><![CDATA[$indexer]]></code>
+      <code><![CDATA[$product]]></code>
+      <code><![CDATA[$stockQty]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[getChannel]]></code>
+      <code><![CDATA[getCurrentChannel]]></code>
+      <code><![CDATA[getFinalPrice]]></code>
+      <code><![CDATA[getMinimalPrice]]></code>
+      <code><![CDATA[getPriceIndexer]]></code>
+      <code><![CDATA[getTypeInstance]]></code>
+      <code><![CDATA[getTypeInstance]]></code>
+      <code><![CDATA[setChannel]]></code>
+      <code><![CDATA[setCustomerGroup]]></code>
+      <code><![CDATA[setProduct]]></code>
+    </MixedMethodCall>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[! $customerGroup]]></code>
+      <code><![CDATA[$dto->channelId]]></code>
+      <code><![CDATA[$dto->channelId]]></code>
+      <code><![CDATA[$dto->customerGroupId]]></code>
+      <code><![CDATA[$dto->customerGroupId]]></code>
+    </RiskyTruthyFalsyComparison>
+    <UndefinedFunction>
+      <code><![CDATA[core()]]></code>
+      <code><![CDATA[core()]]></code>
+    </UndefinedFunction>
+    <UnusedClass>
+      <code><![CDATA[PriceCalculator]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Services/RecommendationScoringEngine.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[RecommendationScoringEngine]]></code>
+    </ClassMustBeFinal>
+    <InvalidOperand>
+      <code><![CDATA[$ai * 100]]></code>
+      <code><![CDATA[$cores - 2]]></code>
+      <code><![CDATA[$gaming * 100]]></code>
+      <code><![CDATA[$memoryBus - 64]]></code>
+      <code><![CDATA[$ramCapacity - 4]]></code>
+      <code><![CDATA[$ramSpeed - 2133]]></code>
+      <code><![CDATA[$readSpeed - 500]]></code>
+      <code><![CDATA[$render * 100]]></code>
+      <code><![CDATA[$threads - 4]]></code>
+      <code><![CDATA[$vram - 2]]></code>
+      <code><![CDATA[$writeSpeed - 500]]></code>
+      <code><![CDATA[($maxPerformance / $price) * 100]]></code>
+    </InvalidOperand>
+  </file>
+  <file src="app/Domain/Services/SalableInventoryEngine.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[SalableInventoryEngine]]></code>
+    </ClassMustBeFinal>
+    <MixedAssignment>
+      <code><![CDATA[$item]]></code>
+      <code><![CDATA[$ordered]]></code>
+      <code><![CDATA[$record]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[first]]></code>
+    </MixedMethodCall>
+    <MixedPropertyFetch>
+      <code><![CDATA[$item->qty]]></code>
+      <code><![CDATA[$ordered->qty]]></code>
+    </MixedPropertyFetch>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[find]]></code>
+    </UndefinedInterfaceMethod>
+    <UndefinedMagicMethod>
+      <code><![CDATA[ProductOrderedInventory::where([
+            'product_id' => $productId,
+            'channel_id' => $channelId,
+        ])]]></code>
+    </UndefinedMagicMethod>
+    <UnusedClass>
+      <code><![CDATA[SalableInventoryEngine]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Services/SlugGenerator.php">
+    <UnusedClass>
+      <code><![CDATA[SlugGenerator]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Services/UpgradeAdvisor.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[UpgradeAdvisor]]></code>
+    </ClassMustBeFinal>
+    <InvalidOperand>
+      <code><![CDATA[$valueDelta * 100]]></code>
+    </InvalidOperand>
+    <MixedArrayAccess>
+      <code><![CDATA[$a['value_delta']]]></code>
+      <code><![CDATA[$b['value_delta']]]></code>
+    </MixedArrayAccess>
+    <MixedAssignment>
+      <code><![CDATA[$cand]]></code>
+    </MixedAssignment>
+    <MixedPropertyFetch>
+      <code><![CDATA[$cand->price]]></code>
+    </MixedPropertyFetch>
+    <UnusedClass>
+      <code><![CDATA[UpgradeAdvisor]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Services/WarrantyPolicy.php">
+    <UnusedClass>
+      <code><![CDATA[WarrantyPolicy]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Specifications/BrandSpecification.php">
+    <MixedArgument>
+      <code><![CDATA[$brand->slug]]></code>
+    </MixedArgument>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$brand->slug]]></code>
+    </UndefinedMagicPropertyFetch>
+    <UnusedClass>
+      <code><![CDATA[BrandSpecification]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/Specifications/CompatibilitySpecification.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$rule->child_product_id]]></code>
+      <code><![CDATA[$rule->parent_product_id]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="app/Domain/Specifications/WarrantySpecification.php">
+    <UnusedClass>
+      <code><![CDATA[WarrantySpecification]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/ValueObjects/Address.php">
+    <UnusedClass>
+      <code><![CDATA[Address]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/ValueObjects/Currency.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getSymbol]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/ValueObjects/Dimension.php">
+    <UnusedClass>
+      <code><![CDATA[Dimension]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/ValueObjects/Money.php">
+    <InvalidOperand>
+      <code><![CDATA[$amount * 100]]></code>
+      <code><![CDATA[$this->amount * $multiplier]]></code>
+    </InvalidOperand>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[add]]></code>
+      <code><![CDATA[fromSubunits]]></code>
+      <code><![CDATA[getDecimalAmount]]></code>
+      <code><![CDATA[subtract]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/ValueObjects/PartNumber.php">
+    <UnusedClass>
+      <code><![CDATA[PartNumber]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/ValueObjects/Phone.php">
+    <PossiblyNullArgument>
+      <code><![CDATA[$digits]]></code>
+    </PossiblyNullArgument>
+    <UnusedClass>
+      <code><![CDATA[Phone]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/ValueObjects/ProductCode.php">
+    <UnusedClass>
+      <code><![CDATA[ProductCode]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/ValueObjects/ScoreMatrix.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getAiScore]]></code>
+      <code><![CDATA[getValueScore]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/ValueObjects/SeoMeta.php">
+    <UnusedClass>
+      <code><![CDATA[SeoMeta]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Domain/ValueObjects/SerialNumber.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/ValueObjects/Warranty.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+      <code><![CDATA[getFormatted]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Domain/ValueObjects/Weight.php">
+    <InvalidOperand>
+      <code><![CDATA[$this->value * 1000]]></code>
+    </InvalidOperand>
+    <UnusedClass>
+      <code><![CDATA[Weight]]></code>
+    </UnusedClass>
+  </file>
+  <file src="packages/Webkul/Product/src/Repositories/ProductInventoryRepository.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function model(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+</files>

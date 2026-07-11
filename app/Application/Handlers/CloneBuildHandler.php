@@ -29,6 +29,7 @@ final readonly class CloneBuildHandler
 
             $cloned = $this->buildRepository->create([
                 'uuid' => (string) Str::uuid(),
+                'name' => $original->name ? 'Clone of '.$original->name : null,
                 'user_id' => $dto->userId ?? $original->user_id,
                 'total_price' => $original->total_price,
                 'estimated_wattage' => $original->estimated_wattage,

@@ -10,6 +10,8 @@ use App\Application\Bus\SimpleCommandBus;
 use App\Application\Bus\SimpleQueryBus;
 use App\Application\Contracts\CommandBusInterface;
 use App\Application\Contracts\QueryBusInterface;
+use App\Application\Handlers\GetProductPriceHandler;
+use App\Application\Queries\GetProductPriceQueryHandler;
 use App\Domain\Models\Brand;
 use App\Domain\Models\Product as CustomProduct;
 use App\Domain\Repositories\BrandRepositoryInterface;
@@ -17,14 +19,6 @@ use App\Domain\Repositories\BrandSeriesRepositoryInterface;
 use App\Domain\Repositories\BuildRepositoryInterface;
 use App\Domain\Repositories\CompatibilityRepositoryInterface;
 use App\Domain\Repositories\DistrictRepositoryInterface;
-use App\Domain\Repositories\Eloquent\BrandRepository;
-use App\Domain\Repositories\Eloquent\BrandSeriesRepository;
-use App\Domain\Repositories\Eloquent\BuildRepository;
-use App\Domain\Repositories\Eloquent\CompatibilityRepository;
-use App\Domain\Repositories\Eloquent\DistrictRepository;
-use App\Domain\Repositories\Eloquent\ProductInventoryRepository;
-use App\Domain\Repositories\Eloquent\ProductSerialRepository;
-use App\Domain\Repositories\Eloquent\UpazilaRepository;
 use App\Domain\Repositories\ProductInventoryRepositoryInterface;
 use App\Domain\Repositories\ProductSerialRepositoryInterface;
 use App\Domain\Repositories\UpazilaRepositoryInterface;
@@ -36,6 +30,16 @@ use App\Foundation\Media\MediaService;
 use App\Foundation\SEO\SEOService;
 use App\Foundation\Tax\DefaultTaxResolver;
 use App\Foundation\Tax\TaxResolverInterface;
+use App\Infrastructure\Persistence\Eloquent\BrandRepository;
+use App\Infrastructure\Persistence\Eloquent\BrandSeriesRepository;
+use App\Infrastructure\Persistence\Eloquent\BuildRepository;
+use App\Infrastructure\Persistence\Eloquent\CompatibilityRepository;
+use App\Infrastructure\Persistence\Eloquent\DistrictRepository;
+use App\Infrastructure\Persistence\Eloquent\ProductInventoryRepository;
+use App\Infrastructure\Persistence\Eloquent\ProductSerialRepository;
+use App\Infrastructure\Persistence\Eloquent\UpazilaRepository;
+use App\Listeners\RecalculateProductPriceListener;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Webkul\Product\Contracts\Product as ProductContract;
 use Webkul\Product\Models\Product;
@@ -90,6 +94,11 @@ class FoundationServiceProvider extends ServiceProvider
         $this->app->singleton(CommandBusInterface::class, SimpleCommandBus::class);
         $this->app->singleton(QueryBusInterface::class, SimpleQueryBus::class);
 
+        $this->app->bind(
+            GetProductPriceQueryHandler::class,
+            GetProductPriceHandler::class
+        );
+
         // Merge custom administration menu and ACL configurations
         $this->mergeConfigFrom(base_path('config/menu.php'), 'menu.admin');
         $this->mergeConfigFrom(base_path('config/acl.php'), 'acl');
@@ -104,5 +113,15 @@ class FoundationServiceProvider extends ServiceProvider
         Product::resolveRelationUsing('brand', function ($productModel) {
             return $productModel->belongsTo(Brand::class, 'brand_id');
         });
+
+        // Register dynamic pricing listeners
+        Event::listen(
+            'catalog.product.update.after',
+            RecalculateProductPriceListener::class
+        );
+        Event::listen(
+            'checkout.order.save.after',
+            RecalculateProductPriceListener::class
+        );
     }
 }

@@ -248,3 +248,80 @@ test('add build to cart runs successfully', function () {
 
     DB::rollBack();
 });
+
+test('save build with custom name works and clone build copies name with prefix', function () {
+    DB::beginTransaction();
+
+    $cpu = createPCBuilderTestProduct('CPU-'.uniqid(), 299.99);
+
+    $dto = new SaveBuildDto(
+        buildId: null,
+        userId: null,
+        items: ['cpu' => $cpu->id],
+        version: 1,
+        name: 'My Special Workstation'
+    );
+
+    $handler = app(SaveBuildHandler::class);
+    $response = $handler->handle($dto);
+
+    expect($response->isSuccess())->toBeTrue();
+    $data = $response->getPayload();
+
+    $build = Build::find($data['id']);
+    expect($build->name)->toBe('My Special Workstation');
+
+    // Clone it
+    $cloneHandler = app(CloneBuildHandler::class);
+    $resClone = $cloneHandler->handle(new CloneBuildDto($build->id))->getPayload();
+
+    $clonedBuild = Build::find($resClone['id']);
+    expect($clonedBuild->name)->toBe('Clone of My Special Workstation');
+
+    DB::rollBack();
+});
+
+test('storefront pc builder api endpoints return correct json structure', function () {
+    DB::beginTransaction();
+
+    $cpu = createPCBuilderTestProduct('CPU-test-sf', 199.99);
+    setPCBuilderProductAttribute($cpu->id, 'supported_chipsets', 'B650');
+
+    // Test products endpoint
+    $responseProducts = $this->getJson(route('shop.pc-builder.api.products', ['type' => 'cpu', 'search' => 'CPU-test-sf']));
+    $responseProducts->assertStatus(200);
+    $responseProducts->assertJsonStructure([
+        'data' => [
+            '*' => ['id', 'sku', 'name', 'price', 'formatted_price', 'in_stock', 'stock_qty', 'url_key'],
+        ],
+        'current_page',
+        'last_page',
+        'total',
+    ]);
+
+    // Test compatibility check endpoint
+    $responseComp = $this->postJson(route('shop.pc-builder.api.compatibility'), [
+        'items' => ['cpu' => $cpu->id],
+    ]);
+    $responseComp->assertStatus(200);
+    $responseComp->assertJsonStructure([
+        'success',
+        'message',
+        'data' => [],
+    ]);
+
+    // Test save build endpoint
+    $responseSave = $this->postJson(route('shop.pc-builder.api.save'), [
+        'items' => ['cpu' => $cpu->id],
+        'name' => 'Storefront Saved Build',
+        'version' => 1,
+    ]);
+    $responseSave->assertStatus(200);
+    $responseSave->assertJsonStructure([
+        'success',
+        'message',
+        'data' => ['id', 'uuid', 'version', 'total_price'],
+    ]);
+
+    DB::rollBack();
+});

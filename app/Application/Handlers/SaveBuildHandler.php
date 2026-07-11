@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Application\Handlers;
 
+use App\Application\Contracts\QueryBusInterface;
+use App\Application\DTO\CalculatePriceDto;
 use App\Application\DTO\SaveBuildDto;
+use App\Application\Queries\GetProductPriceQuery;
 use App\Application\Responses\CommandResponse;
 use App\Domain\Models\HardwareProfile;
 use App\Domain\Repositories\BuildRepositoryInterface;
@@ -47,16 +50,21 @@ final readonly class SaveBuildHandler
                 'attribute_values.attribute',
             ])->findWhereIn('id', $productIds);
 
-            // Compute total price and power wattage
             $totalPrice = 0;
             $estimatedWattage = 0;
             $keyedProfiles = [];
+            $queryBus = app(QueryBusInterface::class);
 
             foreach ($dto->items as $slot => $productId) {
                 $product = $products->firstWhere('id', $productId);
                 if ($product) {
                     $profile = HardwareProfile::fromProduct($product);
-                    $totalPrice += (float) $profile->get('price', 0);
+                    $priceMoney = $queryBus->ask(
+                        new GetProductPriceQuery(
+                            new CalculatePriceDto($productId, 1)
+                        )
+                    );
+                    $totalPrice += $priceMoney->getDecimalAmount();
                     $estimatedWattage += (int) $profile->get('power_draw', 0);
                     $keyedProfiles[$slot] = $profile;
                 }
@@ -74,18 +82,25 @@ final readonly class SaveBuildHandler
             $buildHash = md5(json_encode($dto->items));
 
             if ($build) {
-                $build->update([
+                $updateData = [
                     'total_price' => $totalPrice,
                     'estimated_wattage' => $estimatedWattage,
                     'version' => $build->version + 1,
                     'build_hash' => $buildHash,
-                ]);
+                ];
+
+                if ($dto->name !== null) {
+                    $updateData['name'] = $dto->name;
+                }
+
+                $build->update($updateData);
 
                 // Sync items
                 $build->items()->delete();
             } else {
                 $build = $this->buildRepository->create([
                     'uuid' => (string) Str::uuid(),
+                    'name' => $dto->name,
                     'user_id' => $dto->userId,
                     'total_price' => $totalPrice,
                     'estimated_wattage' => $estimatedWattage,

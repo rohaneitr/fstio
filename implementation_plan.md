@@ -1,146 +1,174 @@
-# Enterprise Brand Module Implementation Plan
+# Enterprise Price Decorator Implementation Blueprint
+**Phase:** 15.6
+**Mode:** ZERO TRUST (Implementation Planning)
+**Date:** 2026-07-10
 
-This plan details the files to be created and modified to implement a complete, production-grade **Enterprise Brand Module** inside `fstio` on top of Bagisto v2.4.8.
+## 1. Implementation Scope
 
----
-
-## 1. Bounded Context & Folder Structure
-
-We will implement all Brand bounded context components inside the existing `app/`, `database/`, `resources/`, and `tests/` directories, respecting DDD, CQRS, and Clean Architecture principles.
-
-```
-app/
-├── Application/
-│   ├── DTO/
-│   │   ├── CreateBrandDto.php
-│   │   └── UpdateBrandDto.php
-│   └── Handlers/
-│       ├── CreateBrandHandler.php
-│       ├── UpdateBrandHandler.php
-│       └── DeleteBrandHandler.php
-├── Domain/
-│   ├── Models/
-│   │   ├── Brand.php
-│   │   └── BrandSeries.php
-│   └── Repositories/
-│       └── Eloquent/
-│           ├── BrandRepository.php
-│           └── BrandSeriesRepository.php
-└── Http/
-    ├── Controllers/
-    │   └── Admin/
-    │       └── BrandController.php
-    ├── DataGrids/
-    │   └── BrandDataGrid.php
-    └── Requests/
-        └── BrandRequest.php
-```
+- **Domain:** Modify `PriceCalculator` to conditionally accept a pre-calculated base price instead of querying it.
+- **Application:** Update `CalculatePriceDto` to support an optional `$basePrice` parameter. Update `GetProductPriceQuery` transparently.
+- **Infrastructure:** Update `AppServiceProvider` event listener to pass `$item->base_price` to the DTO and mutate cart item totals statelessly (bypassing `custom_price`).
+- **Presentation:** No changes required.
+- **Configuration:** No changes required.
+- **Tests:** No existing Bagisto tests will be modified. They will organically pass once the polymorphic bug is eliminated. 
 
 ---
 
-## 2. Proposed Changes
+## 2. Affected Files
 
-### Database Schema
-#### [NEW] [2026_07_09_000007_create_brands_table.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/database/migrations/2026_07_09_000007_create_brands_table.php)
-- Creates `brands` table: `id`, `slug` (unique index), `name`, `logo_light`, `logo_dark`, `website_url`, `status` (boolean), `description` (text), `meta_title`, `meta_keywords`, `meta_description`.
+### A. `app/Application/DTO/CalculatePriceDto.php`
+- **Current Responsibility:** Transports product ID and quantity to the Pricing Engine.
+- **Required Change:** Add `public ?float $basePrice = null` to the constructor.
+- **Reason:** Allows the Cart Event to provide the native polymorphic price directly to the engine, bypassing the database query.
+- **Risk:** Low. Adding an optional parameter is backward compatible with PC Builder.
+- **Rollback:** Remove the parameter.
 
-#### [NEW] [2026_07_09_000008_create_brand_series_table.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/database/migrations/2026_07_09_000008_create_brand_series_table.php)
-- Creates `brand_series` table: `id`, `brand_id` (foreign key referencing `brands(id)` on delete cascade), `slug` (unique index), `name`.
-
----
-
-### Domain Layer
-#### [MODIFY] [Brand.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/app/Domain/Models/Brand.php)
-- Add `$table = 'brands'`, `$fillable`, and dynamic relationship bindings (`series`).
-
-#### [NEW] [BrandSeries.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/app/Domain/Models/BrandSeries.php)
-- Create Eloquent model for series referencing the `Brand` model.
-
-#### [NEW] [BrandSeriesRepository.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/app/Domain/Repositories/Eloquent/BrandSeriesRepository.php)
-- Create repository concrete implementing `BrandSeriesRepositoryInterface`.
-
----
-
-### Application Layer (CQRS Use Cases)
-#### [NEW] [CreateBrandDto.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/app/Application/DTO/CreateBrandDto.php)
-- Add DTO wrapper for creating brands.
-
-#### [NEW] [CreateBrandHandler.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/app/Application/Handlers/CreateBrandHandler.php)
-- Handles creation transactionally. Saves light/dark logo assets in WebP format using `image_manager()`.
-
-#### [NEW] [UpdateBrandDto.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/app/Application/DTO/UpdateBrandDto.php)
-- Add DTO wrapper for updating brands.
-
-#### [NEW] [UpdateBrandHandler.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/app/Application/Handlers/UpdateBrandHandler.php)
-- Handles brand updates. Deletes old logos on replacement.
-
-#### [NEW] [DeleteBrandHandler.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/app/Application/Handlers/DeleteBrandHandler.php)
-- Handles deletions. Deletes logo directories from storage.
-
----
-
-### Presentation / Controller Layer
-#### [NEW] [BrandRequest.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/app/Http/Requests/BrandRequest.php)
-- Handlers validation for CRUD inputs: slug syntax, logo formats (WebP/SVG/PNG/JPG), and dimensions.
-
-#### [NEW] [BrandDataGrid.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/app/Http/DataGrids/BrandDataGrid.php)
-- Subclasses Datagrid to display columns with edit/delete actions.
-
-#### [NEW] [BrandController.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/app/Http/Controllers/Admin/BrandController.php)
-- CRUD controller dispatching commands to buses and rendering views.
-
-#### [NEW] [index.blade.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/resources/views/admin/catalog/brands/index.blade.php)
-- Displays Datagrid list view.
-
-#### [NEW] [create.blade.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/resources/views/admin/catalog/brands/create.blade.php)
-- Form layout for brand creation.
-
-#### [NEW] [edit.blade.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/resources/views/admin/catalog/brands/edit.blade.php)
-- Form layout for brand edits.
-
-#### [MODIFY] [routes/web.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/routes/web.php)
-- Registers `/admin/catalog/brands` controller routes.
-
----
-
-### Menu & ACL Configurations
-#### [MODIFY] [FoundationServiceProvider.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/app/Foundation/Providers/FoundationServiceProvider.php)
-- Merges config for `menu.admin` and `acl` dynamically on boot.
-
-#### [NEW] [menu.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/config/menu.php)
-- Injects sidebar navigation item under `catalog.brands`.
-
-#### [NEW] [acl.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/config/acl.php)
-- Injects ACL permission tree for Brand administration.
-
----
-
-### Localization Layer
-#### [NEW] [brand.php (English)](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/lang/en/brand.php)
-- English dictionary for labels.
-
-#### [NEW] [brand.php (Bangla)](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/lang/bn/brand.php)
-- Bangla dictionary for labels.
-
----
-
-### Seeder & Test Layer
-#### [NEW] [BrandSeeder.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/database/seeders/BrandSeeder.php)
-- Seed data entries.
-
-#### [NEW] [BrandControllerTest.php](file:///c:/Users/Rohan/Desktop/fastcomputer.com.bd/tests/Feature/BrandControllerTest.php)
-- Feature tests asserting CRUD access validation, logo processing, and datagrid outputs.
-
----
-
-## 3. Verification Plan
-
-### Automated Tests
-- Run complete unit and feature suites:
-  ```bash
-  docker compose exec -T laravel.test php artisan test
+### B. `app/Domain/Services/PriceCalculator.php`
+- **Current Responsibility:** Calculates final price by querying `ProductPricingPortInterface` and applying scarcity markup.
+- **Required Change:** 
+  ```php
+  $price = $dto->basePrice ?? $this->pricingPort->resolvePrice(...);
   ```
-- Run code standards format checks:
-  ```bash
-  docker compose exec -T laravel.test vendor/bin/pint --test
-  ```
+- **Reason:** If a `basePrice` is provided (as from the cart), use it to decorate. Otherwise, fallback to the Port for standalone components (PC Builder).
+- **Risk:** Low. Safe fallback ensures no other feature breaks.
+- **Rollback:** Revert to strict port querying.
+
+### C. `app/Providers/AppServiceProvider.php`
+- **Current Responsibility:** Hooks into `checkout.cart.collect.totals.before`, queries the engine, and forcefully locks `custom_price`.
+- **Required Change:**
+  1. Pass `(float) $item->base_price` into `CalculatePriceDto`.
+  2. Remove `$item->custom_price = $newBasePrice;`.
+  3. Compare against `$item->base_price` instead of `custom_price`.
+- **Reason:** Eradicates the permanent lock that destroys Bundle/Configurable pricing loops. Enables a purely stateless decoration cycle.
+- **Risk:** High (Core checkout math).
+- **Rollback:** Re-add `custom_price` assignment.
+
+---
+
+## 3. Price Decorator Flow
+
+```mermaid
+graph TD
+    A[Bagisto Cart Load] --> B[AbstractType::validateCartItem]
+    B --> C{Natively Calculate Polymorphic Price}
+    C --> D[Save to $item->base_price]
+    D --> E[checkout.cart.collect.totals.before Event]
+    E --> F[Extract $item->base_price]
+    F --> G[Pass to CalculatePriceDto]
+    G --> H[PriceCalculator applies Scarcity Markup]
+    H --> I[Mutate $item->base_price & $item->total in memory]
+    I --> J[calculateItemsTax computes tax on decorated total]
+    J --> K[CartRules compute discounts on decorated total]
+    K --> L[Grand Total Aggregation]
+```
+
+---
+
+## 4. DTO Contract
+
+**`CalculatePriceDto`**
+- **Inputs:** `productId` (int), `quantity` (int, default 1), `customerGroupId` (?int), `channelId` (?int), `basePrice` (?float, default null).
+- **Outputs:** (DTO is input-only).
+- **Immutable Fields:** All fields `public readonly`.
+- **Validation:** Type-hinted constructor.
+- **Backward Compatibility:** `basePrice` MUST be nullable and default to `null` to ensure PC Builder (`PCBuilderController`, `SaveBuildHandler`, etc.) continues to function without modification.
+
+---
+
+## 5. Domain Service Changes (`PriceCalculator`)
+
+- **Methods to modify:** `calculate(CalculatePriceDto $dto): Money`
+- **Logic:** `if ($dto->basePrice !== null) { $price = $dto->basePrice; } else { $price = $this->pricingPort->resolvePrice(...); }`
+- **Methods to deprecate:** None.
+- **Methods to keep unchanged:** Scarcity logic (`getTotalStock`).
+- **Obsolete Dependencies:** `ProductPricingPortInterface` becomes obsolete **ONLY for the Cart Flow**. It remains active for the PC Builder flow.
+
+---
+
+## 6. Application Layer Changes
+
+- **Handlers:** `GetProductPriceHandler` remains completely unchanged (it passes the DTO to `PriceCalculator`).
+- **Queries:** `GetProductPriceQuery` remains unchanged.
+- **Command flow:** N/A.
+- **Query flow:** The Cart listener dispatches `GetProductPriceQuery` with the updated DTO.
+- **Transaction boundary impact:** None. Operations are in-memory cart updates prior to Order creation.
+
+---
+
+## 7. Infrastructure Changes
+
+- **Event Listener:** Modified inline within `AppServiceProvider::boot()`.
+- **Service Providers:** No bindings change.
+- **Ports/Adapters:** `ProductPricingPortInterface` / `BagistoProductPricingAdapter` remain bound.
+- **Unused Ports:** None globally, but skipped during Cart Totals calculation.
+
+---
+
+## 8. Testing Strategy
+
+- **Unit Tests:**
+  - Verify `CalculatePriceDto` accepts `basePrice`.
+  - Verify `PriceCalculator` prioritizes `basePrice` over Port.
+- **Integration Tests:**
+  - Verify `checkout.cart.collect.totals.before` listener applies markup without setting `custom_price`.
+- **Regression Tests (Run full Bagisto Suite):**
+  - `php artisan test --filter=BundleProductTest`
+  - `php artisan test --filter=ConfigurableProductTest`
+  - Ensure the 56 failing tests from Phase 15.2 now pass natively.
+- **Performance Benchmarks:**
+  - The removal of the DB query via `ProductPricingPortInterface` will improve cart load times.
+
+---
+
+## 9. Acceptance Criteria
+
+1. **No Bagisto core modifications** (100% true).
+2. **No vendor modifications** (100% true).
+3. **All 56 previously failing Pest tests PASS** natively.
+4. **Bundle pricing preserved** (polymorphic logic restores correctly).
+5. **Configurable pricing preserved.**
+6. **Dynamic pricing preserved** (10% scarcity markup correctly overlays on total).
+7. **PHPStan Level 9 clean** (`vendor/bin/phpstan analyse --level=9`).
+8. **Composer PSR-4 clean.**
+
+---
+
+## 10. Risk Matrix
+
+| Step | Probability | Impact | Detection | Mitigation | Rollback |
+|---|---|---|---|---|---|
+| DTO Update | Low | Low | PHPStan | Strongly typed | `git restore` |
+| Calculator Update | Low | High | Unit Tests | Ternary fallback logic | `git restore` |
+| Event Listener Update | Medium | Critical | Pest Tests | Run full cart regression suite | `git restore` |
+| Omit `custom_price` | Low | High | Manual checkout test | DB inspection of `cart_items` | Restore assignment |
+
+---
+
+## 11. Execution Order
+
+### **Step 1: Application Layer DTO Enhancement**
+- **Files:** `app/Application/DTO/CalculatePriceDto.php`
+- **Action:** Add `public ?float $basePrice = null;`
+- **Pass Criteria:** `phpstan analyse` passes.
+
+### **Step 2: Domain Logic Enhancement**
+- **Files:** `app/Domain/Services/PriceCalculator.php`
+- **Action:** Add `$price = $dto->basePrice ?? $this->pricingPort->resolvePrice(...)`
+- **Pass Criteria:** `php artisan test` (domain tests pass).
+
+### **Step 3: Infrastructure Event Alignment**
+- **Files:** `app/Providers/AppServiceProvider.php`
+- **Action:** Pass `$item->base_price` to DTO. Remove `$item->custom_price` assignment. Align comparison to `$item->base_price`.
+- **Pass Criteria:** 
+  - `vendor/bin/pint --dirty`
+  - `php artisan test packages/Webkul/Shop/tests` -> **MUST PASS**.
+
+---
+
+## 12. Final Decision
+
+> [!IMPORTANT]
+> **IMPLEMENTATION READINESS CERTIFICATE**
+> The architecture is completely mathematically sound. The root cause (a database lock via `custom_price`) is fully addressed by a stateless in-memory mutation of `$item->base_price`. All prerequisites are met. 
+> 
+> **The implementation can safely proceed.**

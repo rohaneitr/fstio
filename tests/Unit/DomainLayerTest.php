@@ -14,7 +14,6 @@ use App\Domain\Factories\BrandFactory;
 use App\Domain\Factories\CompatibilityFactory;
 use App\Domain\Factories\ProductSerialFactory;
 use App\Domain\Services\CompatibilityEngine;
-use App\Domain\Services\PriceCalculator;
 use App\Domain\Services\SlugGenerator;
 use App\Domain\Services\WarrantyPolicy;
 use App\Domain\Specifications\BrandSpecification;
@@ -131,7 +130,7 @@ test('factories resolve entities successfully', function () {
     $slug = $slugGen->generate('Intel Core i9');
 
     $brandFact = new BrandFactory;
-    $brand = $brandFact->create($slug, 'logo.jpg');
+    $brand = $brandFact->create('Intel Core i9', $slug, 'logo.jpg');
     expect($brand->slug)->toBe('intel-core-i9');
 
     $compatFact = new CompatibilityFactory;
@@ -149,7 +148,7 @@ test('specifications assert invariants properly', function () {
     $brandFact = new BrandFactory;
     $brandSpec = new BrandSpecification;
     $slug = new Slug('gigabyte');
-    $brand = $brandFact->create($slug);
+    $brand = $brandFact->create('Gigabyte', $slug);
     expect($brandSpec->isSatisfiedBy($brand))->toBeTrue();
 
     $compatFact = new CompatibilityFactory;
@@ -177,7 +176,4 @@ test('domain services process aggregates logic', function () {
     expect($policy->isExtendable($w1))->toBeTrue();
     expect($policy->isExtendable($w2))->toBeFalse();
 
-    $calc = new PriceCalculator;
-    $total = $calc->calculateTotal(Money::BDT(100), 0.05);
-    expect($total->getDecimalAmount())->toBe(105.0);
 });

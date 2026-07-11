@@ -13,6 +13,7 @@ final readonly class SaveBuildDto
         public ?int $buildId,
         public ?int $userId,
         public array $items,
-        public int $version = 1
+        public int $version = 1,
+        public ?string $name = null
     ) {}
 }

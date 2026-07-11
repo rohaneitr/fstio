@@ -1,0 +1,16 @@
+{
+    "$schema": "vendor/infection/infection/resources/schema.json",
+    "source": {
+        "directories": [
+            "app/Domain",
+            "app/Application/DTO"
+        ]
+    },
+    "logs": {
+        "text": "storage/logs/infection.log",
+        "summary": "storage/logs/infection-summary.log"
+    },
+    "mutators": {
+        "@default": true
+    }
+}

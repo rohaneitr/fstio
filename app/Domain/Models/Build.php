@@ -13,6 +13,7 @@ class Build extends Model
 
     protected $fillable = [
         'uuid',
+        'name',
         'user_id',
         'total_price',
         'estimated_wattage',

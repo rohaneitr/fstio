@@ -55,7 +55,7 @@ final readonly class UpdateBrandHandler
                     }
                 }
                 if ($dto->getLogoLight()) {
-                    $logoLightPath = 'brand/logos/' . Str::random(40) . '.webp';
+                    $logoLightPath = 'brand/logos/'.Str::random(40).'.webp';
                     $encoded = image_manager()->read($dto->getLogoLight())->encodeByExtension('webp');
                     Storage::put($logoLightPath, (string) $encoded);
                     $uploadedFiles[] = $logoLightPath;
@@ -69,7 +69,7 @@ final readonly class UpdateBrandHandler
                     }
                 }
                 if ($dto->getLogoDark()) {
-                    $logoDarkPath = 'brand/logos/' . Str::random(40) . '.webp';
+                    $logoDarkPath = 'brand/logos/'.Str::random(40).'.webp';
                     $encoded = image_manager()->read($dto->getLogoDark())->encodeByExtension('webp');
                     Storage::put($logoDarkPath, (string) $encoded);
                     $uploadedFiles[] = $logoDarkPath;

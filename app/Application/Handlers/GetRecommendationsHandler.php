@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Application\Handlers;
 
+use App\Application\Contracts\QueryBusInterface;
+use App\Application\DTO\CalculatePriceDto;
 use App\Application\DTO\GetRecommendationsDto;
+use App\Application\Queries\GetProductPriceQuery;
 use App\Application\Responses\CommandResponse;
 use App\Domain\Services\HybridRecommendationPipeline;
 use Illuminate\Support\Facades\Cache;
@@ -47,13 +50,23 @@ final readonly class GetRecommendationsHandler
             );
 
             // Map suggestions to serializable arrays
-            return array_map(fn ($s) => [
-                'product_id' => $s['product']->id,
-                'name' => $s['product']->sku,
-                'price' => $s['price'],
-                'scores' => $s['scores'],
-                'distance' => round($s['distance'], 4),
-            ], $suggestions);
+            $queryBus = app(QueryBusInterface::class);
+
+            return array_map(function ($s) use ($queryBus) {
+                $priceMoney = $queryBus->ask(
+                    new GetProductPriceQuery(
+                        new CalculatePriceDto($s['product']->id, 1)
+                    )
+                );
+
+                return [
+                    'product_id' => $s['product']->id,
+                    'name' => $s['product']->name,
+                    'price' => $priceMoney->getDecimalAmount(),
+                    'scores' => $s['scores'],
+                    'distance' => round($s['distance'], 4),
+                ];
+            }, $suggestions);
         });
 
         if ($payload === null) {

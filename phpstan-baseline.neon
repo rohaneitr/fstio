@@ -1,0 +1,805 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method App\\Domain\\Models\\Brand\:\:series\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Models/Brand.php
+
+		-
+			message: '#^Method App\\Domain\\Models\\BrandSeries\:\:brand\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Models/BrandSeries.php
+
+		-
+			message: '#^Cannot access property \$value on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Domain/Models/Build.php
+
+		-
+			message: '#^Method App\\Domain\\Models\\Build\:\:items\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Models/Build.php
+
+		-
+			message: '#^Method App\\Domain\\Models\\BuildItem\:\:build\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Models/BuildItem.php
+
+		-
+			message: '#^Method App\\Domain\\Models\\BuildItem\:\:product\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Models/BuildItem.php
+
+		-
+			message: '#^Parameter \#1 \$related of method Illuminate\\Database\\Eloquent\\Model\:\:belongsTo\(\) expects class\-string\<Illuminate\\Database\\Eloquent\\Model\>, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Models/BuildItem.php
+
+		-
+			message: '#^Unable to resolve the template type TRelatedModel in call to method Illuminate\\Database\\Eloquent\\Model\:\:belongsTo\(\)$#'
+			identifier: argument.templateType
+			count: 1
+			path: app/Domain/Models/BuildItem.php
+
+		-
+			message: '#^Method App\\Domain\\Models\\District\:\:upazilas\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Models/District.php
+
+		-
+			message: '#^Method App\\Domain\\Models\\HardwareProfile\:\:fromProduct\(\) has parameter \$product with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: app/Domain/Models/HardwareProfile.php
+
+		-
+			message: '#^Method App\\Domain\\Models\\HardwareProfile\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Models/HardwareProfile.php
+
+		-
+			message: '#^Access to an undefined property Webkul\\Product\\Models\\ProductFlat\:\:\$price\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Models/Product.php
+
+		-
+			message: '#^Method App\\Domain\\Models\\Product\:\:brand\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Models/Product.php
+
+		-
+			message: '#^Method App\\Domain\\Models\\Product\:\:getPriceAttribute\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Models/Product.php
+
+		-
+			message: '#^Method App\\Domain\\Models\\Product\:\:getPriceAttribute\(\) has parameter \$value with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: app/Domain/Models/Product.php
+
+		-
+			message: '#^Method App\\Domain\\Models\\Product\:\:getPriceIndicesAttribute\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Models/Product.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>price" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Domain/Models/Product.php
+
+		-
+			message: '#^Method App\\Domain\\Models\\Upazila\:\:district\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Models/Upazila.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BrandRepositoryInterface\:\:create\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BrandRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BrandRepositoryInterface\:\:delete\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BrandRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BrandRepositoryInterface\:\:find\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BrandRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BrandRepositoryInterface\:\:findBySlug\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BrandRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BrandRepositoryInterface\:\:update\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BrandRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BrandSeriesRepositoryInterface\:\:create\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BrandSeriesRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BrandSeriesRepositoryInterface\:\:delete\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BrandSeriesRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BrandSeriesRepositoryInterface\:\:find\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BrandSeriesRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BrandSeriesRepositoryInterface\:\:update\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BrandSeriesRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BuildRepositoryInterface\:\:create\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BuildRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BuildRepositoryInterface\:\:create\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Repositories/BuildRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BuildRepositoryInterface\:\:delete\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BuildRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BuildRepositoryInterface\:\:find\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BuildRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BuildRepositoryInterface\:\:findByUuid\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BuildRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BuildRepositoryInterface\:\:update\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/BuildRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\BuildRepositoryInterface\:\:update\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Repositories/BuildRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\CompatibilityRepositoryInterface\:\:create\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/CompatibilityRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\CompatibilityRepositoryInterface\:\:delete\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/CompatibilityRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\CompatibilityRepositoryInterface\:\:find\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/CompatibilityRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\DistrictRepositoryInterface\:\:create\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/DistrictRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\DistrictRepositoryInterface\:\:delete\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/DistrictRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\DistrictRepositoryInterface\:\:find\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/DistrictRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\ProductInventoryRepositoryInterface\:\:findForProductAndSource\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/ProductInventoryRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\ProductSerialRepositoryInterface\:\:create\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/ProductSerialRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\ProductSerialRepositoryInterface\:\:delete\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/ProductSerialRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\ProductSerialRepositoryInterface\:\:find\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/ProductSerialRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\ProductSerialRepositoryInterface\:\:update\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/ProductSerialRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\UpazilaRepositoryInterface\:\:create\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/UpazilaRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\UpazilaRepositoryInterface\:\:delete\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/UpazilaRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Repositories\\UpazilaRepositoryInterface\:\:find\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Repositories/UpazilaRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Responses\\CompatibilityResult\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Responses/CompatibilityResult.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: app/Domain/Rules/ARGBHeaderRule.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: app/Domain/Rules/ARGBHeaderRule.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: app/Domain/Rules/BiosCompatibilityRule.php
+
+		-
+			message: '#^Part \$mbBios \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/BiosCompatibilityRule.php
+
+		-
+			message: '#^Part \$requiredBios \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/BiosCompatibilityRule.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 2
+			path: app/Domain/Rules/CaseClearanceRule.php
+
+		-
+			message: '#^Part \$casePsuClearance \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/CaseClearanceRule.php
+
+		-
+			message: '#^Part \$psuLength \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/CaseClearanceRule.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: app/Domain/Rules/ChipsetCompatibilityRule.php
+
+		-
+			message: '#^Part \$mbChipset \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/ChipsetCompatibilityRule.php
+
+		-
+			message: '#^Part \$supportedChipsets \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/ChipsetCompatibilityRule.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 2
+			path: app/Domain/Rules/CoolerHeightRule.php
+
+		-
+			message: '#^Part \$caseClearance \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/CoolerHeightRule.php
+
+		-
+			message: '#^Part \$coolerHeight \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/CoolerHeightRule.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: app/Domain/Rules/FanHeaderRule.php
+
+		-
+			message: '#^Part \$mbFans \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/FanHeaderRule.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: app/Domain/Rules/FrontPanelHeaderRule.php
+
+		-
+			message: '#^Part \$caseAudio \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: app/Domain/Rules/FrontPanelHeaderRule.php
+
+		-
+			message: '#^Part \$mbAudio \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: app/Domain/Rules/FrontPanelHeaderRule.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 2
+			path: app/Domain/Rules/GPULengthRule.php
+
+		-
+			message: '#^Part \$caseClearance \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/GPULengthRule.php
+
+		-
+			message: '#^Part \$gpuLength \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/GPULengthRule.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 2
+			path: app/Domain/Rules/GPUThicknessRule.php
+
+		-
+			message: '#^Part \$caseSlots \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/GPUThicknessRule.php
+
+		-
+			message: '#^Part \$gpuSlots \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/GPUThicknessRule.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 3
+			path: app/Domain/Rules/M2LaneSharingRule.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 2
+			path: app/Domain/Rules/MemoryCapacityRule.php
+
+		-
+			message: '#^Part \$mbMaxCapacity \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 3
+			path: app/Domain/Rules/MemoryCapacityRule.php
+
+		-
+			message: '#^Part \$ramCapacity \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/MemoryCapacityRule.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: app/Domain/Rules/MemoryGenerationRule.php
+
+		-
+			message: '#^Part \$mbGen \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/MemoryGenerationRule.php
+
+		-
+			message: '#^Part \$ramGen \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/MemoryGenerationRule.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: app/Domain/Rules/MemorySlotRule.php
+
+		-
+			message: '#^Part \$mbSlots \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 3
+			path: app/Domain/Rules/MemorySlotRule.php
+
+		-
+			message: '#^Part \$ramModules \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/MemorySlotRule.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 2
+			path: app/Domain/Rules/MemorySpeedRule.php
+
+		-
+			message: '#^Part \$mbMaxSpeed \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 4
+			path: app/Domain/Rules/MemorySpeedRule.php
+
+		-
+			message: '#^Part \$ramSpeed \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/MemorySpeedRule.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: app/Domain/Rules/MotherboardFormFactorRule.php
+
+		-
+			message: '#^Part \$caseSupportedForms \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/MotherboardFormFactorRule.php
+
+		-
+			message: '#^Part \$mbForm \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/MotherboardFormFactorRule.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: app/Domain/Rules/NVMeGenerationRule.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: app/Domain/Rules/NVMeGenerationRule.php
+
+		-
+			message: '#^Part \$mbM2Gen \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 3
+			path: app/Domain/Rules/NVMeGenerationRule.php
+
+		-
+			message: '#^Part \$storageGen \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/NVMeGenerationRule.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: app/Domain/Rules/PCIeGenerationRule.php
+
+		-
+			message: '#^Part \$gpuGen \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/PCIeGenerationRule.php
+
+		-
+			message: '#^Part \$mbGen \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/PCIeGenerationRule.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: app/Domain/Rules/PCIeLaneRule.php
+
+		-
+			message: '#^Part \$mbLanes \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/PCIeLaneRule.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: app/Domain/Rules/PSUConnectorRule.php
+
+		-
+			message: '#^Part \$gpuConnectors \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/PSUConnectorRule.php
+
+		-
+			message: '#^Part \$psuConnectors \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/PSUConnectorRule.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 3
+			path: app/Domain/Rules/PSUHeadroomRule.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: app/Domain/Rules/SocketCompatibilityRule.php
+
+		-
+			message: '#^Part \$cpuSocket \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/SocketCompatibilityRule.php
+
+		-
+			message: '#^Part \$mbSocket \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/SocketCompatibilityRule.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: app/Domain/Rules/StorageInterfaceRule.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 3
+			path: app/Domain/Rules/StorageInterfaceRule.php
+
+		-
+			message: '#^Part \$mbM2Slots \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/StorageInterfaceRule.php
+
+		-
+			message: '#^Part \$mbSataPorts \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: app/Domain/Rules/StorageInterfaceRule.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: app/Domain/Rules/USBHeaderRule.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: app/Domain/Rules/XMPExpoRule.php
+
+		-
+			message: '#^Part \$ramProfile \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: app/Domain/Rules/XMPExpoRule.php
+
+		-
+			message: '#^Part \$supportedProfiles \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: app/Domain/Rules/XMPExpoRule.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 6
+			path: app/Domain/Services/HybridRecommendationPipeline.php
+
+		-
+			message: '#^Method App\\Domain\\Services\\HybridRecommendationPipeline\:\:suggestAlternatives\(\) has parameter \$candidates with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Services/HybridRecommendationPipeline.php
+
+		-
+			message: '#^Method App\\Domain\\Services\\HybridRecommendationPipeline\:\:suggestAlternatives\(\) has parameter \$targetProduct with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: app/Domain/Services/HybridRecommendationPipeline.php
+
+		-
+			message: '#^Method App\\Domain\\Services\\HybridRecommendationPipeline\:\:suggestAlternatives\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Services/HybridRecommendationPipeline.php
+
+		-
+			message: '#^Parameter \#1 \$array \(list\<array\{product\: mixed, scores\: array, distance\: float, price\: float\}\>\) of array_values is already a list, call has no effect\.$#'
+			identifier: arrayValues.list
+			count: 3
+			path: app/Domain/Services/HybridRecommendationPipeline.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 9
+			path: app/Domain/Services/RecommendationScoringEngine.php
+
+		-
+			message: '#^Access to an undefined property Webkul\\Product\\Models\\ProductOrderedInventory\:\:\$qty\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Services/SalableInventoryEngine.php
+
+		-
+			message: '#^Call to an undefined method App\\Domain\\Repositories\\ProductInventoryRepositoryInterface\:\:find\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Services/SalableInventoryEngine.php
+
+		-
+			message: '#^Method App\\Domain\\Services\\UpgradeAdvisor\:\:advise\(\) has parameter \$candidates with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Services/UpgradeAdvisor.php
+
+		-
+			message: '#^Method App\\Domain\\Services\\UpgradeAdvisor\:\:advise\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Services/UpgradeAdvisor.php
+
+		-
+			message: '#^Method App\\Domain\\ValueObjects\\Phone\:\:normalize\(\) should return string but returns string\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/ValueObjects/Phone.php
+
+		-
+			message: '#^Parameter \#1 \$haystack of function str_starts_with expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 2
+			path: app/Domain/ValueObjects/Phone.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strlen expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/ValueObjects/Phone.php
+
+		-
+			message: '#^Parameter \#1 \$string of function substr expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/ValueObjects/Phone.php
+
+		-
+			message: '#^Method App\\Domain\\ValueObjects\\ScoreMatrix\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/ValueObjects/ScoreMatrix.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\BrandRepository\:\:findBySlug\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/BrandRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\BuildRepository\:\:findByUuid\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/BuildRepository.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$qty\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Infrastructure/Persistence/Eloquent/ProductInventoryRepository.php
+
+		-
+			message: '#^Access to an undefined property Webkul\\Product\\Models\\ProductOrderedInventory\:\:\$qty\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/ProductInventoryRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\ProductInventoryRepository\:\:findForProductAndSource\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/ProductInventoryRepository.php
